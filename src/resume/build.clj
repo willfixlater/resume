@@ -1,27 +1,24 @@
 (ns resume.build
-  (:require [hickory.core :refer [parse-fragment as-hiccup]]
-            [hickory.render :refer [hiccup-to-html]]
+  (:require [endophile.core :refer [mp]]
+            [endophile.hiccup :refer [to-hiccup]]
+            [hiccup.page :refer [html5]]
             [clojure.java.io :refer [resource]]))
 
 (defn parse-resume
   ([]
-   (parse-resume (resource "markup/resume.html")))
+   (parse-resume (resource "markup/resume.md")))
   ([path]
-   (->> (slurp path)
-        parse-fragment
-        (map as-hiccup))))
+   (-> path slurp mp to-hiccup)))
 
-(defn compile-html-doc [& body]
-  (list
-   "<!DOCTYPE html>\n"
-   [:html
-    [:head]
-    (into [:body] body)]))
+(defn compile-html-doc [lang head body]
+  (html5 {:lang lang}
+   (into [:head] head)
+   (into [:body] body)))
 
 (defn build-doc
   ([]
    (build-doc "public/index.html"))
   ([out]
    (let [resume (into [:div#resume] (parse-resume))
-         doc    (-> resume compile-html-doc hiccup-to-html)]
+         doc    (compile-html-doc "en" [] [resume])]
      (spit out doc))))

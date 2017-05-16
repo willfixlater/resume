@@ -2,7 +2,8 @@
 
 (set-env! :source-paths #{"src"}
           :resource-paths #{"resources"}
-          :dependencies '[[hickory "RELEASE"]])
+          :dependencies '[[endophile "RELEASE"]
+                          [hiccup "RELEASE"]])
 
 (require '[resume.build :refer [build-doc]])
 
@@ -10,3 +11,6 @@
   "Build the entire project document."
   []
   (build-doc))
+
+
+

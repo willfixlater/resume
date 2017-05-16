@@ -1,3 +1,4 @@
 /public/
 .repl
 .nrepl-port
+.nrepl-history
