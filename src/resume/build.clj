@@ -2,13 +2,26 @@
   (:require [endophile.core :refer [mp]]
             [endophile.hiccup :refer [to-hiccup]]
             [hiccup.page :refer [html5]]
-            [clojure.java.io :refer [resource]]))
+            [clojure.java.io :refer [as-file]]
+            [clojure.string :refer [split]]))
 
-(defn parse-resume
-  ([]
-   (parse-resume (resource "markup/resume.md")))
-  ([path]
-   (-> path slurp mp to-hiccup)))
+(defn get-name [file]
+  (-> file .getName (split #"\.") first))
+
+(defn wrap-with-div
+  ([contents]
+   (into [:div] contents))
+  ([selectors contents]
+   (into [(keyword (apply str "div" selectors))] contents)))
+
+(defn parse-file [file]
+  (-> file slurp mp to-hiccup))
+
+(defn parse-dir [dir]
+  (->> (file-seq dir)
+   (filter #(.isFile %))
+   (map #(wrap-with-div ["#" (get-name %)]
+                        (parse-file %)))))
 
 (defn compile-html-doc [lang head body]
   (html5 {:lang lang}
@@ -19,6 +32,6 @@
   ([]
    (build-doc "public/index.html"))
   ([out]
-   (let [resume (into [:div#resume] (parse-resume))
-         doc    (compile-html-doc "en" [] [resume])]
+   (let [body (-> "resources/markup" as-file parse-dir)
+         doc  (compile-html-doc "en" [] body)]
      (spit out doc))))
