@@ -1,5 +1,5 @@
-perspective.el
-/public/
+/public/**
 .repl
 .nrepl-port
 .nrepl-history
+perspective.el
