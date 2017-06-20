@@ -3,7 +3,11 @@
             [clojure.java.io :refer [as-file]]
             [clojure.string :refer [split]]))
 
-(def doc-order ["resume" "cv"])
+(def doc-order ["contact"
+                "resume"
+                "professional-experience"
+                "educational-background"
+                "references"])
 
 (defn index-of [e coll]
   (first (keep-indexed #(when (= e %2) %1) coll)))

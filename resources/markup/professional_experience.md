@@ -1,8 +1,6 @@
-Id: cv
+Id: professional-experience
 
-## Curriculum Vitae
-
-### Professional Experience
+## Professional Experience
 
 *PostedIn* _[July, 2014 - Present]_  
 __Fullstack Developer__  
@@ -34,31 +32,3 @@ __Support Engineer__
 * As part of the refresh team, facilitated efficient deployment of the new Dell make assets to replace the retiring Lenovo fleet across the Northern Territory Government.
 * Spent time as a Field Services technician deploying, removing, relocating and repairing a range of hardware including: laptops, desktops, peripherals, printers, multi-function devices and network equipment such as switches and UPS’s.
 * Worked as a Remote technician, servicing the vast range of software being occupied on the NT Government and NT Police, Fire and Emergency Services networks.
-
-### Educational Background
-
-*Charles Darwin University* **Darwin, NT of Australia**  
-__Certificate 3 in Information Communication Technology__
-
-*Darwin High School* **Darwin, NT of Australia**  
-__Secondary Education__
-
-### References
-
-*Sara Badilla* (Spanish only)  
-_Cocha Tourism_  
-sbadilla@cocha.com  
-+56 2 2377 8551
-
-*Tom Pisel*  
-_Medesen_  
-tom.pxl@gmail.com  
-+61 4 2695 9635
-
-*Laura Barstow*  
-_Melbourne Racing Club_  
-+61 3 9257 7289
-
-*Ronil Narayan*  
-_CSG Technology Solutions_  
-+61 4 3982 6625
