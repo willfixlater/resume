@@ -2,33 +2,33 @@ Id: professional-experience
 
 ## Professional Experience
 
-*PostedIn* _[July, 2014 - Present]_  
-__Fullstack Developer__  
+PostedIn __[July, 2014 - Present]__  
+**Fullstack Developer**  
 * Enhanced various web applications belonging to the company, utilizing tools such as Ember.js and React. As well as PHP/Laravel on the backend.
 * Migrated a network of over a dozen sites dedicated to content publishing to the Pelican static site generator, vastly reducing server overhead.
 * Migrated all of the forums corresponding to the content sites to a distributed network of Docker containers using Discourse.
 
-*Cocha Tourism* _[February, 2014 - July, 2014]_  
-__Software Analyst/Engineer__  
+Cocha Tourism __[February, 2014 - July, 2014]__  
+**Software Analyst/Engineer**  
 * Was the lead developer of an internal Customer Relationship Management application, working with tools such as PHP, Symfony and Javascript.
 * Maintained another internal application, Contact Center, which was used to facilitate communication and workflow between teams.
 * Significantly optimized the exisiting data stores and developed a small tool for running ETL ("Extract, Translate, Load") scripts between the various MySQL, PostgreSQL and SQL Server databases.
 
-*Medesen* _[December, 2012 - September, 2013]_  
-__Tech Co-founder__  
+Medesen __[December, 2012 - September, 2013]__  
+**Tech Co-founder**  
 * Responsible for all technical decision-making and software development.
 * Developed an e-commerce platform for pharmacies and vendors in the healthcare space, which allowed them to adapt the service to their local legislative requirements.
 * Initially prototyped in Wordpress, later re-written to Python and Django. Hired and directed contractors to help with the development of the rewrite.
 * Oversaw all of the company's expenditures and book-keeping.
 
-*Melbourne Racing Club* _[August, 2012 - November, 2012]_  
-__Support Engineer__  
+Melbourne Racing Club __[August, 2012 - November, 2012]__  
+**Support Engineer**  
 * Provided support to an array of smaller offices across many locations, each site providing varied challenges from Hospitality and Gambling specific hardware to ad-hoc network configurations.
 * Administered and provided ongoing development for the organization's various websites, including their company site along with those belonging to their 12 distinct venues.
 * Serviced and repaired both desktop and server applications, in particular the event management software used by the club: Ungerboeck's EMS.
 
-*CSG Technology Solutions* _[June, 2011 - July, 2012]_  
-__Support Engineer__  
+CSG Technology Solutions __[June, 2011 - July, 2012]__  
+**Support Engineer**  
 * As part of the refresh team, facilitated efficient deployment of the new Dell make assets to replace the retiring Lenovo fleet across the Northern Territory Government.
 * Spent time as a Field Services technician deploying, removing, relocating and repairing a range of hardware including: laptops, desktops, peripherals, printers, multi-function devices and network equipment such as switches and UPS’s.
 * Worked as a Remote technician, servicing the vast range of software being occupied on the NT Government and NT Police, Fire and Emergency Services networks.

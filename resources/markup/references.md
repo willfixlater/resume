@@ -2,20 +2,16 @@ Id: references
 
 ## References
 
-*Sara Badilla* (Spanish only)  
-_Cocha Tourism_  
+**Cocha Tourism**  
+Sara Badilla (Spanish only)  
 sbadilla@cocha.com  
 +56 2 2377 8551
 
-*Tom Pisel*  
-_Medesen_  
+**Medesen**  
+Tom Pisel  
 tom.pxl@gmail.com  
 +61 4 2695 9635
 
-*Laura Barstow*  
-_Melbourne Racing Club_  
-+61 3 9257 7289
-
-*Ronil Narayan*  
-_CSG Technology Solutions_  
+**CSG Technology Solutions**  
+Ronil Narayan  
 +61 4 3982 6625
