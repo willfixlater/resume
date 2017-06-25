@@ -1,4 +1,4 @@
-/public/**
+/target/**
 .repl
 .nrepl-port
 .nrepl-history

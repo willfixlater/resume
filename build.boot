@@ -1,12 +1,23 @@
 (def project 'resume)
 
 (set-env! :source-paths #{"src"}
-          :resource-paths #{"resources"}
-          :dependencies '[[markdown-clj "RELEASE"]])
+          :resource-paths #{"resources"
+                            "target"}
+          :dependencies '[[pandeiro/boot-http "0.8.3"]
+                          [markdown-clj "0.9.99"]])
 
-(require '[resume.build :refer [build-doc]])
+(require '[pandeiro.boot-http :refer [serve]])
+(require '[resume.build :refer [build]])
 
-(deftask build
-  "Build the entire project document."
+(deftask once
+  "Build the project once."
   []
-  (build-doc))
+  (build))
+
+(deftask dev
+  "Rebuild and serve for development."
+  []
+  (comp
+    (build)
+    (serve :dir "public")
+    (watch)))

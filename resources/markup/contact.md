@@ -2,4 +2,6 @@ Id: contact
 
 ## Contact
 
-TODO
+**Shayden Martin**  
+mail@shayden.me  
++56 9 94834363
