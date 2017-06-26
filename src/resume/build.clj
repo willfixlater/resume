@@ -2,6 +2,7 @@
   (:require [boot.core :as boot]
             [clojure.java.io :as io]
             [clojure.string :refer [split]]
+            [clojure.pprint :refer [pprint]]
             [markdown.core :refer [md-to-html-string-with-meta]]))
 
 (def doc-order ["contact"
@@ -31,7 +32,8 @@
   (-> file slurp md-to-html-string-with-meta))
 
 (defn parse-dir [dir opts]
-  (->> (file-seq dir)
+  (->> dir
+   (map boot/tmp-file)
    (filter #(.isFile %))
    (map parse-file)
    (sort-by (:sort opts))
@@ -57,11 +59,10 @@
     (fn build-middleware [next-handler]
       (fn build-handler [fileset]
         (let [in-files (boot/input-files fileset)
-              mu-files (boot/by-path ["resources/markup"] in-files)
-              md-files (boot/by-ext [".md"] mu-files)
-              out (io/file tmp "target/index.html")]
-          (build-doc md-files out))
-        (-> fileset
-          (boot/add-resource tmp)
-          boot/commit!
-          next-handler)))))
+              md-files (boot/by-re [#"^markup/.+\.md$"] in-files)
+              out (io/file tmp "index.html")]
+          (build-doc md-files out)
+          (-> fileset
+            (boot/add-resource tmp)
+            boot/commit!
+            next-handler))))))
