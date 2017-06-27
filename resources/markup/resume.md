@@ -16,4 +16,4 @@ I started with Postedin in August 2014. They hired me for a diverse array of pro
 
 Clojure has been my language of choice since the beginnings of 2016. I have written a library in it, Turmeric, and a handful of personal projects. I understand category theory, lambda calculas and combinatory logic as they apply to programming, through the Curry-Howard(-Lambek) isomorphism and otherwise, as well as theoretically to an intermediate degree.
 
-I have been living in Chile for the last 4 years and speak Spanish fluently.
+I have been living in Chile since 2013 and speak Spanish fluently.
