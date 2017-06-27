@@ -14,6 +14,6 @@ I took on the role of project lead for an internal Customer Relationship Managem
 
 I started with Postedin in August 2014. They hired me for a diverse array of project needs, inluding: migrating a network of over a dozen Wordpress publications to Pelican, a static site generator written in Python; aiding in the re-write of their legacy code base to a new PHP/Laravel and JS/Ember stack; and configuring a Docker-based server architecture for a network of Discourse forums.
 
-Clojure has been my language of choice since the beginnings of 2016. I have written a library in it, Turmeric, and a handful of personal projects. I understand category theory, lambda calculas and combinatory logic as they apply to programming, through the Curry-Howard(-Lambek) isomorphism and otherwise, as well as theoretically to an intermediate degree.
+Clojure has been my language of choice since the beginning of 2016. I have written a library in it, Turmeric, and a handful of personal projects. I understand category theory, lambda calculas and combinatory logic as they apply to programming, through the Curry-Howard(-Lambek) isomorphism and otherwise, as well as theoretically to an intermediate degree.
 
 I have been living in Chile since 2013 and speak Spanish fluently.
