@@ -28,13 +28,24 @@
        (str " class=\"" classes "\""))
      ">\n" contents "\n</" (name elem) ">\n")))
 
+(defn title-tag [title]
+  (str
+    "<title>"
+    title
+    "</title>\n"))
+
+(defn style-tag [path]
+  (str
+    "<link "
+    "rel=\"stylesheet\" "
+    "type=\"text/css\" "
+    "href=\"" path "\">\n"))
+
 (defn parse-file [file]
   (-> file slurp md-to-html-string-with-meta))
 
 (defn parse-dir [dir opts]
   (->> dir
-   (map boot/tmp-file)
-   (filter #(.isFile %))
    (map parse-file)
    (sort-by (:sort opts))
    (map #(wrap-with :div {:id (get-id %)}
@@ -47,10 +58,17 @@
    "<body>\n" body "</body>\n"
    "</html>\n"))
 
-(defn build-doc [in out]
-  (let [body (parse-dir in {:sort #(index-of (get-id %) doc-order)})
-        doc  (compile-html-doc "en" "" (apply str body))]
+(defn build-doc [in out opts]
+  (let [head (cons (title-tag "Curriculum Vitae")
+                   (map style-tag (:styles opts)))
+        body (parse-dir in {:sort #(index-of (get-id %) doc-order)})
+        doc  (compile-html-doc "en" (apply str head) (apply str body))]
     (spit out doc)))
+
+(defn copy-file [in out]
+  (doto out
+    io/make-parents
+    (spit (slurp in))))
 
 (boot/deftask build
   "Build the entire project document."
@@ -60,9 +78,14 @@
       (fn build-handler [fileset]
         (let [in-files (boot/input-files fileset)
               md-files (boot/by-re [#"^markup/.+\.md$"] in-files)
-              out (io/file tmp "index.html")]
-          (build-doc md-files out)
-          (-> fileset
-            (boot/add-resource tmp)
-            boot/commit!
-            next-handler))))))
+              css-files (boot/by-re [#"^styles/.+\.css$"] in-files)
+              html-out (io/file tmp "index.html")]
+          (build-doc (map boot/tmp-file md-files) html-out
+            {:styles (map :path css-files)})
+          (doseq [css-file css-files]
+            (let [css-out (io/file tmp (boot/tmp-path css-file))]
+              (copy-file (boot/tmp-file css-file) css-out))))
+        (-> fileset
+          (boot/add-resource tmp)
+          boot/commit!
+          next-handler)))))
