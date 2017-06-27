@@ -59,7 +59,7 @@
    "</html>\n"))
 
 (defn build-doc [in out opts]
-  (let [head (cons (title-tag "Curriculum Vitae")
+  (let [head (cons (title-tag "Resume - Shayden Martin")
                    (map style-tag (:styles opts)))
         body (parse-dir in {:sort #(index-of (get-id %) doc-order)})
         doc  (compile-html-doc "en" (apply str head) (apply str body))]
