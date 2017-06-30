@@ -41,22 +41,22 @@
     "type=\"text/css\" "
     "href=\"" path "\">\n"))
 
-(defn parse-file [file]
-  (-> file slurp md-to-html-string-with-meta))
-
-(defn parse-dir [dir opts]
-  (->> dir
-   (map parse-file)
-   (sort-by (:sort opts))
-   (map #(wrap-with :div {:id (get-id %)}
-                         (:html %)))))
-
 (defn compile-html-doc [lang head body]
   (str "<!DOCTYPE html>\n"
    "<html lang=\"" lang "\">\n"
    "<head>\n" head "</head>\n"
    "<body>\n" body "</body>\n"
    "</html>\n"))
+
+(defn parse-file [file]
+  (-> file slurp md-to-html-string-with-meta))
+
+(defn parse-dir [dir opts]
+  (->> dir
+    (map parse-file)
+    (sort-by (:sort opts))
+    (map #(wrap-with :div {:id (get-id %)}
+                          (:html %)))))
 
 (defn build-doc [in out opts]
   (let [head (cons (title-tag "Resume - Shayden Martin")
@@ -73,18 +73,18 @@
 (boot/deftask build
   "Build the entire project document."
   []
-  (let [tmp (boot/tmp-dir!)]
-    (fn build-middleware [next-handler]
-      (fn build-handler [fileset]
-        (let [in-files (boot/input-files fileset)
-              md-files (boot/by-re [#"^markup/.+\.md$"] in-files)
-              css-files (boot/by-re [#"^styles/.+\.css$"] in-files)
-              html-out (io/file tmp "index.html")]
-          (build-doc (map boot/tmp-file md-files) html-out
-            {:styles (map :path css-files)})
-          (doseq [css-file css-files]
-            (let [css-out (io/file tmp (boot/tmp-path css-file))]
-              (copy-file (boot/tmp-file css-file) css-out))))
+  (fn build-middleware [next-handler]
+    (fn build-handler [fileset]
+      (let [tmp (boot/tmp-dir!)
+            in-files (boot/input-files fileset)
+            md-files (boot/by-re [#"^markup/.+\.md$"] in-files)
+            css-files (boot/by-re [#"^styles/.+\.css$"] in-files)
+            html-out (io/file tmp "index.html")]
+        (build-doc (map boot/tmp-file md-files) html-out
+          {:styles (map :path css-files)})
+        (doseq [css-file css-files]
+          (let [css-out (io/file tmp (boot/tmp-path css-file))]
+            (copy-file (boot/tmp-file css-file) css-out)))
         (-> fileset
           (boot/add-resource tmp)
           boot/commit!

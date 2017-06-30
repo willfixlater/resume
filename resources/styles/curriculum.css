@@ -1,31 +1,45 @@
 body {
-  font-family: Verdana, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
+  font-size: 22px;
 }
 
 @media only screen {
   body {
-    max-width: 800px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20%;
+  }
+}
+
+@media only screen and (max-device-width : 799px) {
+  body {
+    font-size: 40px;
+    max-width: none;
+    margin-left: 3rem;
+    margin-right: 3rem;
   }
 }
 
 @media only print {
   body {
-    margin-left: 5%;
-    margin-right: 5%;
+    font-size: 18px;
   }
+}
+
+@page {
+  margin: 2cm;
 }
 
 h1, h2 {
   margin-top: 4rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   text-align: center;
 }
 
 @media only print {
   h1, h2 {
-    margin-top: 2rem;
+    margin-top: 2cm;
   }
 }
 
@@ -34,13 +48,42 @@ h2 {
 }
 
 p {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
   page-break-inside: avoid;
+}
+
+li {
+  margin-top: 1rem;
+  margin-bottom: 1rem:
+}
+
+@media only print {
+  li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 #contact {
   margin-top: 4rem;
   margin-bottom: 4rem;
   text-align: center;
+}
+
+@media only screen and (max-device-width : 799px) {
+  #contact p {
+    font-size: 3rem;
+    line-height: 2;
+  }
+}
+
+@media only print {
+  #contact {
+    margin-top: 0;
+    margin-bottom: 1cm;
+  }
 }
 
 #references h2 {
@@ -53,4 +96,20 @@ p {
   margin-left: 1rem;
   margin-right: 1rem;
   text-align: center;
+}
+
+@media only screen and (max-device-width : 799px) {
+  #references p {
+    display: block;
+    font-size: 3rem;
+    line-height: 2;
+    margin-top: 3rem;
+  }
+}
+
+@media only print {
+  #references p {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
 }
