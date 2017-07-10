@@ -5,14 +5,17 @@
             [clojure.pprint :refer [pprint]]
             [markdown.core :refer [md-to-html-string-with-meta]]))
 
-(def doc-order ["contact"
-                "resume"
-                "professional-experience"
-                "educational-background"
-                "references"])
+;; Constants
 
-(defn index-of [e coll]
-  (first (keep-indexed #(when (= e %2) %1) coll)))
+(def doc-order
+  (let [docs ["contact"
+              "resume"
+              "professional-experience"
+              "educational-background"
+              "references"]]
+    (zipmap docs (range))))
+
+;; Transformations (Pure)
 
 (defn get-id [doc]
   (-> doc :metadata :id first))
@@ -48,6 +51,8 @@
    "<body>\n" body "</body>\n"
    "</html>\n"))
 
+;; Actions (Impure)
+
 (defn parse-file [file]
   (-> file slurp md-to-html-string-with-meta))
 
@@ -58,10 +63,12 @@
     (map #(wrap-with :div {:id (get-id %)}
                           (:html %)))))
 
+;; Boot Glue
+
 (defn build-doc [in out opts]
   (let [head (cons (title-tag "Resume - Shayden Martin")
                    (map style-tag (:styles opts)))
-        body (parse-dir in {:sort #(index-of (get-id %) doc-order)})
+        body (parse-dir in {:sort #(get doc-order (get-id %))})
         doc  (compile-html-doc "en" (apply str head) (apply str body))]
     (spit out doc)))
 
