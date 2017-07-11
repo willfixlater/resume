@@ -2,7 +2,6 @@
   (:require [boot.core :as boot]
             [clojure.java.io :as io]
             [clojure.string :refer [split]]
-            [clojure.pprint :refer [pprint]]
             [markdown.core :refer [md-to-html-string-with-meta]]))
 
 ;; Constants
@@ -63,19 +62,19 @@
     (map #(wrap-with :div {:id (get-id %)}
                           (:html %)))))
 
-;; Boot Glue
-
 (defn build-doc [in out opts]
-  (let [head (cons (title-tag "Resume - Shayden Martin")
+  (let [head (cons (title-tag (:title opts))
                    (map style-tag (:styles opts)))
         body (parse-dir in {:sort #(get doc-order (get-id %))})
-        doc  (compile-html-doc "en" (apply str head) (apply str body))]
+        doc  (compile-html-doc (:lang opts) (apply str head) (apply str body))]
     (spit out doc)))
 
 (defn copy-file [in out]
   (doto out
     io/make-parents
     (spit (slurp in))))
+
+;; Boot Task
 
 (boot/deftask build
   "Build the entire project document."
@@ -88,7 +87,9 @@
             css-files (boot/by-re [#"^styles/.+\.css$"] in-files)
             html-out (io/file tmp "index.html")]
         (build-doc (map boot/tmp-file md-files) html-out
-          {:styles (map :path css-files)})
+          {:lang "en"
+           :title "Resume - Shayden Martin"
+           :styles (map :path css-files)})
         (doseq [css-file css-files]
           (let [css-out (io/file tmp (boot/tmp-path css-file))]
             (copy-file (boot/tmp-file css-file) css-out)))
