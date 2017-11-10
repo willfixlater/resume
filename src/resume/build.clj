@@ -4,20 +4,13 @@
             [clojure.string :refer [split]]
             [markdown.core :refer [md-to-html-string-with-meta]]))
 
-;; Constants
-
-(def doc-order
-  (let [docs ["contact"
-              "resume"
-              "professional-experience"
-              "educational-background"
-              "references"]]
-    (zipmap docs (range))))
-
 ;; Transformations (Pure)
 
 (defn get-id [doc]
   (-> doc :metadata :id first))
+
+(defn vec->order [v]
+  (zipmap v (range)))
 
 (defn wrap-with
   ([elem contents]
@@ -65,7 +58,7 @@
 (defn build-doc [in out opts]
   (let [head (cons (title-tag (:title opts))
                    (map style-tag (:styles opts)))
-        body (parse-dir in {:sort #(get doc-order (get-id %))})
+        body (parse-dir in {:sort #(get (:order opts) (get-id %))})
         doc  (compile-html-doc (:lang opts) (apply str head) (apply str body))]
     (spit out doc)))
 
@@ -83,13 +76,18 @@
     (fn build-handler [fileset]
       (let [tmp (boot/tmp-dir!)
             in-files (boot/input-files fileset)
-            md-files (boot/by-re [#"^markup/.+\.md$"] in-files)
+            md-files (boot/by-re [#"^markup/en/.+\.md$"] in-files)
             css-files (boot/by-re [#"^styles/.+\.css$"] in-files)
             html-out (io/file tmp "index.html")]
         (build-doc (map boot/tmp-file md-files) html-out
           {:lang "en"
            :title "Resume - Shayden Martin"
-           :styles (map :path css-files)})
+           :styles (map :path css-files)
+           :order (vec->order ["contact"
+                               "resume"
+                               "professional-experience"
+                               "educational-background"
+                               "references"])})
         (doseq [css-file css-files]
           (let [css-out (io/file tmp (boot/tmp-path css-file))]
             (copy-file (boot/tmp-file css-file) css-out)))
