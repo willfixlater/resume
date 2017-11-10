@@ -58,7 +58,7 @@
 (defn build-doc [in out opts]
   (let [head (cons (title-tag (:title opts))
                    (map style-tag (:styles opts)))
-        body (parse-dir in {:sort #(get (:order opts) (get-id %))})
+        body (parse-dir in {:sort #(get (-> opts :order vec->order) (get-id %))})
         doc  (compile-html-doc (:lang opts) (apply str head) (apply str body))]
     (spit out doc)))
 
@@ -83,11 +83,13 @@
           {:lang "en"
            :title "Resume - Shayden Martin"
            :styles (map :path css-files)
-           :order (vec->order ["contact"
-                               "resume"
-                               "professional-experience"
-                               "educational-background"
-                               "references"])})
+           :order ["contact"
+                   "resume"
+                   "professional-experience"
+                   "educational-background"
+                   "references"]})
+        ;; NOTE: There has to be a better way to do this css part,
+        ;; it should also be it's own task really.
         (doseq [css-file css-files]
           (let [css-out (io/file tmp (boot/tmp-path css-file))]
             (copy-file (boot/tmp-file css-file) css-out)))
