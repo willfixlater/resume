@@ -2,7 +2,8 @@
   (:require [boot.core :as boot]
             [clojure.java.io :as io]
             [clojure.string :refer [split]]
-            [markdown.core :refer [md-to-html-string-with-meta]]))
+            [markdown.core :refer [md-to-html-string-with-meta]]
+            [hiccup.page :refer [html5]]))
 
 ;; Transformations (Pure)
 
@@ -12,36 +13,14 @@
 (defn vec->order [v]
   (zipmap v (range)))
 
-(defn wrap-with
-  ([elem contents]
-   (wrap-with elem {} contents))
-  ([elem attrs contents]
-   (str "<" (name elem)
-     (if-let [ids (:id attrs)]
-       (str " id=\"" ids "\""))
-     (if-let [classes (:class attrs)]
-       (str " class=\"" classes "\""))
-     ">\n" contents "\n</" (name elem) ">\n")))
-
-(defn title-tag [title]
-  (str
-    "<title>"
-    title
-    "</title>\n"))
-
 (defn style-tag [path]
-  (str
-    "<link "
-    "rel=\"stylesheet\" "
-    "type=\"text/css\" "
-    "href=\"" path "\">\n"))
+  [:link {:rel  "stylesheet"
+          :type "text/css"
+          :href path}
+    nil])
 
-(defn compile-html-doc [lang head body]
-  (str "<!DOCTYPE html>\n"
-   "<html lang=\"" lang "\">\n"
-   "<head>\n" head "</head>\n"
-   "<body>\n" body "</body>\n"
-   "</html>\n"))
+(defn md->div [md]
+  [:div {:id (get-id md)} (:html md)])
 
 ;; Actions (Impure)
 
@@ -52,14 +31,13 @@
   (->> dir
     (map parse-file)
     (sort-by (:sort opts))
-    (map #(wrap-with :div {:id (get-id %)}
-                          (:html %)))))
+    (map md->div)))
 
 (defn build-doc [in out opts]
-  (let [head (cons (title-tag (:title opts))
-                   (map style-tag (:styles opts)))
-        body (parse-dir in {:sort #(get (-> opts :order vec->order) (get-id %))})
-        doc  (compile-html-doc (:lang opts) (apply str head) (apply str body))]
+  (let [head [:head [:title (:title opts)]
+                    (map style-tag (:styles opts))]
+        body [:body (parse-dir in {:sort #(get (-> opts :order vec->order) (get-id %))})]
+        doc  (html5 {:lang (opts :lang)} head body)]
     (spit out doc)))
 
 (defn copy-file [in out]

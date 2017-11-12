@@ -2,7 +2,8 @@
 
 (set-env! :source-paths #{"src" "resources"}
           :dependencies '[[pandeiro/boot-http "0.8.3"]
-                          [markdown-clj "0.9.99"]])
+                          [markdown-clj "0.9.99"]
+                          [hiccup "1.0.5"]])
 
 (require '[pandeiro.boot-http :refer [serve]])
 (require '[resume.build :refer [build]])
