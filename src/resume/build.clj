@@ -7,8 +7,8 @@
 
 ;; Transformations (Pure)
 
-(defn get-id [doc]
-  (-> doc :metadata :id first))
+(defn doc-id [md]
+  (-> md :metadata :id first))
 
 (defn style-tag [path]
   [:link {:rel  "stylesheet"
@@ -17,7 +17,7 @@
     nil])
 
 (defn md->div [md]
-  [:div {:id (get-id md)} (:html md)])
+  [:div {:id (doc-id md)} (:html md)])
 
 ;; Actions (Impure)
 
@@ -32,9 +32,8 @@
 
 (defn build-doc [in out opts]
   (let [doc-order (zipmap (:order opts) (range))
-        head [:head [:title (:title opts)]
-                    (map style-tag (:styles opts))]
-        body [:body (parse-dir in {:sort #(get doc-order (get-id %))})]
+        head [:head [:title (:title opts)] (map style-tag (:styles opts))]
+        body [:body (parse-dir in {:sort #(get doc-order (doc-id %))})]
         doc  (html5 {:lang (opts :lang)} head body)]
     (spit out doc)))
 
