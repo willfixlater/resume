@@ -10,9 +10,6 @@
 (defn get-id [doc]
   (-> doc :metadata :id first))
 
-(defn vec->order [v]
-  (zipmap v (range)))
-
 (defn style-tag [path]
   [:link {:rel  "stylesheet"
           :type "text/css"
@@ -34,9 +31,10 @@
     (map md->div)))
 
 (defn build-doc [in out opts]
-  (let [head [:head [:title (:title opts)]
+  (let [doc-order (zipmap (:order opts) (range))
+        head [:head [:title (:title opts)]
                     (map style-tag (:styles opts))]
-        body [:body (parse-dir in {:sort #(get (-> opts :order vec->order) (get-id %))})]
+        body [:body (parse-dir in {:sort #(get doc-order (get-id %))})]
         doc  (html5 {:lang (opts :lang)} head body)]
     (spit out doc)))
 
