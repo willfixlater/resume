@@ -4,14 +4,14 @@ Id: references
 
 **Medesen**  
 Tom Pisel  
-<tom.pxl@gmail.com>  
-+61 4 2695 9635
++61 4 2695 9635  
+<tom.pxl@gmail.com>
 
 **Cocha Tourism**  
-(Spanish only)  
 Sara Badilla  
++56 2 2377 8551  
 <sbadilla@cocha.com>  
-+56 2 2377 8551
+(Spanish only)
 
 **CSG Technology**  
 Ronil Narayan  

@@ -93,8 +93,8 @@ li {
 #references p {
   display: inline-block;
   vertical-align: top;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   text-align: center;
 }
 
