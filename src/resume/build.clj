@@ -21,12 +21,12 @@
 
 ;; Actions (Impure)
 
-(defn parse-file [file]
+(defn parse-md-file [file]
   (-> file slurp md-to-html-string-with-meta))
 
 (defn parse-dir [dir opts]
   (->> dir
-    (map parse-file)
+    (map parse-md-file)
     (sort-by (:sort opts))
     (map md->div)))
 
@@ -62,6 +62,7 @@
                    "resume"
                    "professional-experience"
                    "educational-background"
+                   "interesting-reading"
                    "references"]})
         ;; NOTE: There has to be a better way to do this css part,
         ;; it should also be it's own task really.

@@ -2,7 +2,7 @@ Id: professional-experience
 
 ## Professional Experience
 
-**Fullstack Developer** [July, 2014 - Present]  
+**Fullstack Developer** [July, 2014 - December, 2017]  
 *PostedIn*  
 * Enhanced various web applications belonging to the company, utilizing tools such as Ember.js and React. As well as PHP/Laravel on the backend.
 * Migrated a network of over a dozen sites dedicated to content publishing to the Pelican static site generator, vastly reducing server overhead.

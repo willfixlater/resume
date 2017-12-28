@@ -25,6 +25,11 @@ body {
   body {
     font-size: 18px;
   }
+
+  a {
+    color: initial;
+    text-decoration: none;
+  }
 }
 
 @page {
@@ -73,6 +78,11 @@ li {
   text-align: center;
 }
 
+#contact i {
+  font-style: normal;
+  
+}
+
 @media only screen and (max-device-width : 799px) {
   #contact p {
     font-size: 3rem;
@@ -85,6 +95,18 @@ li {
     margin-top: 0;
     margin-bottom: 1cm;
   }
+
+  #contact i a:after {
+    content: ": " attr(href) " ";
+  }
+}
+
+#interesting-reading h2 {
+  page-break-before: initial;
+}
+
+#interesting-reading p {
+  text-align: center;
 }
 
 #references h2 {
