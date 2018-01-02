@@ -5,7 +5,7 @@
             [markdown.core :refer [md-to-html-string-with-meta]]
             [hiccup.page :refer [html5]]))
 
-;; Transformations (Pure)
+;; Pure
 
 (defn doc-id [md]
   (-> md :metadata :id first))
@@ -19,7 +19,7 @@
 (defn md->div [md]
   [:div {:id (doc-id md)} (:html md)])
 
-;; Actions (Impure)
+;; Impure
 
 (defn parse-md-file [file]
   (-> file slurp md-to-html-string-with-meta))
