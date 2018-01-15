@@ -59,10 +59,21 @@ p {
   page-break-inside: avoid;
 }
 
+ul {
+  page-break-inside: avoid;
+}
+
 li {
   margin-top: 1rem;
   margin-bottom: 1rem;
   page-break-inside: avoid;
+}
+
+hr {
+  visibility: hidden;
+  margin: 0;
+  border: 0;
+  page-break-after: always;
 }
 
 @media only print {
