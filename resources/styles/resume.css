@@ -1,3 +1,9 @@
+/* There are two hacks defined here to work around the lack of classes in markdown.
+ * The first is that the 'i' element is used exclusively in the contact section to
+ * make links explicit in print. The second is that the 'hr' element is invisible
+ * and used throughout the document to force a page break in print.
+ */
+
 body {
   font-family: Arial, sans-serif;
   font-size: 22px;
