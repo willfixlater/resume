@@ -118,6 +118,30 @@ hr {
   }
 }
 
+#skill-summary p {
+  margin-top: 2rem;
+}
+
+#skill-summary thead {
+  display: none;
+}
+
+#skill-summary tbody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#skill-summary tr {
+    flex-basis: 45%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#skill-summary td:nth-of-type(2) {
+    text-align: right;
+}
+
 #interesting-reading h2 {
   page-break-before: initial;
 }

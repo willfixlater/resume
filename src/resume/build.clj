@@ -1,5 +1,6 @@
 (ns resume.build
   (:require [boot.core :as boot]
+            [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojure.string :refer [split]]
             [markdown.core :refer [md-to-html-string-with-meta]]
@@ -9,6 +10,12 @@
 
 (defn doc-id [md]
   (-> md :metadata :id first))
+
+(defn doc-visible? [md]
+  (let [visible (-> md :metadata :visible)]
+    (if (nil? visible)
+      true
+      (-> visible first edn/read-string))))
 
 (defn style-tag [path]
   [:link {:rel  "stylesheet"
@@ -26,9 +33,10 @@
 
 (defn parse-dir [dir opts]
   (->> dir
-    (map parse-md-file)
-    (sort-by (:sort opts))
-    (map md->div)))
+       (map parse-md-file)
+       (filter doc-visible?)
+       (sort-by (:sort opts))
+       (map md->div)))
 
 (defn build-doc [in out opts]
   (let [doc-order (zipmap (:order opts) (range))
@@ -60,10 +68,11 @@
            :styles (map :path css-files)
            :order ["contact"
                    "resume"
+                   "skill-summary"
                    "professional-experience"
                    "educational-background"
-                   "interesting-reading"
-                   "references"]})
+                   "references"
+                   "cover-letter"]})
         ;; NOTE: There has to be a better way to do this css part,
         ;; it should also be it's own task really.
         (doseq [css-file css-files]
