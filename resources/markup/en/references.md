@@ -2,10 +2,11 @@ Id: references
 
 ## References
 
-**Medesen**  
-Tom Pisel  
-+61 4 2228 5150  
-<tom.pxl@gmail.com>
+**Postedin**  
+Rodrigo Farcas  
++56 9 7807 9205  
+<rodrigo@postedin.com>  
+(Spanish, English)
 
 **Cocha Tourism**  
 Sara Badilla  
@@ -13,6 +14,12 @@ Sara Badilla
 <sbadilla@cocha.com>  
 (Spanish only)
 
+**Medesen**  
+Tom Pisel  
++61 4 2228 5150  
+<tom.pxl@gmail.com>
+
 **CSG Technology**  
 Ronil Narayan  
-+61 4 3982 6625
++61 4 3982 6625  
+<ronil.narayan@nec.com.au>
