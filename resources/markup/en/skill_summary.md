@@ -34,7 +34,7 @@ Id: skill-summary
 | Django            | ☆★★ |
 | Pyramid           | ☆★★ |
 | Ruby on Rails     | ☆★★ |
-| Spring            | ☆★★ |
+| Spring            | ☆☆★ |
 
 **Tools and Services**
 
