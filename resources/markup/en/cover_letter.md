@@ -1,5 +1,4 @@
 Id: cover-letter
-Visible: false
 
 ## Cover Letter
 

@@ -1,5 +1,4 @@
 Id: interesting-reading
-Visible: false
 
 ## Interesting Reading
 

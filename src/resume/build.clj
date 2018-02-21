@@ -11,12 +11,6 @@
 (defn doc-id [md]
   (-> md :metadata :id first))
 
-(defn doc-visible? [md]
-  (let [visible (-> md :metadata :visible)]
-    (if (nil? visible)
-      true
-      (-> visible first edn/read-string))))
-
 (defn style-tag [path]
   [:link {:rel  "stylesheet"
           :type "text/css"
@@ -34,14 +28,15 @@
 (defn parse-dir [dir opts]
   (->> dir
        (map parse-md-file)
-       (filter doc-visible?)
+       (filter (:filter opts))
        (sort-by (:sort opts))
        (map md->div)))
 
 (defn build-doc [in out opts]
   (let [doc-order (zipmap (:sections opts) (range))
         head [:head [:title (:title opts)] (map style-tag (:styles opts))]
-        body [:body (parse-dir in {:sort #(get doc-order (doc-id %))})]
+        body [:body (parse-dir in {:filter #((set (:sections opts)) (doc-id %))
+                                   :sort   #(get doc-order (doc-id %))})]
         doc  (html5 {:lang (opts :lang)} head body)]
     (spit out doc)))
 
@@ -66,8 +61,7 @@
           {:lang "en"
            :title "Resume - Shayden Martin"
            :styles (map :path css-files)
-           :sections ["cover-letter"
-                      "contact"
+           :sections ["contact"
                       "resume"
                       "skill-summary"
                       "professional-experience"
