@@ -39,7 +39,7 @@
        (map md->div)))
 
 (defn build-doc [in out opts]
-  (let [doc-order (zipmap (:order opts) (range))
+  (let [doc-order (zipmap (:sections opts) (range))
         head [:head [:title (:title opts)] (map style-tag (:styles opts))]
         body [:body (parse-dir in {:sort #(get doc-order (doc-id %))})]
         doc  (html5 {:lang (opts :lang)} head body)]
@@ -66,13 +66,13 @@
           {:lang "en"
            :title "Resume - Shayden Martin"
            :styles (map :path css-files)
-           :order ["contact"
-                   "resume"
-                   "skill-summary"
-                   "professional-experience"
-                   "educational-background"
-                   "references"
-                   "cover-letter"]})
+           :sections ["cover-letter"
+                      "contact"
+                      "resume"
+                      "skill-summary"
+                      "professional-experience"
+                      "educational-background"
+                      "references"]})
         ;; NOTE: There has to be a better way to do this css part,
         ;; it should also be it's own task really.
         (doseq [css-file css-files]
