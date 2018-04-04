@@ -6,7 +6,7 @@
                           [hiccup "1.0.5"]])
 
 (require '[pandeiro.boot-http :refer [serve]])
-(require '[resume.build :refer [build]])
+(require '[resume.boot :refer [build]])
 
 (deftask once
   "Build the project once."
