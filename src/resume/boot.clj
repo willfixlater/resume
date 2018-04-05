@@ -1,7 +1,9 @@
 (ns resume.boot
   (:require [boot.core :as boot]
             [clojure.java.io :as io]
-            [resume.core :refer [build-doc copy-file]]))
+            [resume.core :refer [build-doc copy-file]]
+            [resume.styles :refer  [build]
+                           :rename {build build-styles}]))
 
 (boot/deftask build-html
   "Build the project's html file(s)."
@@ -32,12 +34,8 @@
   []
   (fn middleware [next-handler]
     (fn handler [fileset]
-      (let [tmp (boot/tmp-dir!)
-            in-files (boot/input-files fileset)
-            css-files (boot/by-re [#"^styles/.+\.css$"] in-files)]
-        (doseq [css-file css-files]
-          (let [css-out (io/file tmp (boot/tmp-path css-file))]
-            (copy-file (boot/tmp-file css-file) css-out)))
+      (let [tmp (boot/tmp-dir!)]
+        (build-styles tmp {:dest-dir "styles/"})
         (-> fileset
             (boot/add-resource tmp)
             next-handler)))))
