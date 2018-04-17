@@ -2,6 +2,10 @@ Id: professional-experience
 
 ## Professional Experience
 
+**Associate Consultant** [April, 2018 - Present]  
+*Servian*
+* Provides assistance and advice to Servian's clients in a variety of areas and capacities.
+
 **Fullstack Developer** [July, 2014 - December, 2017]  
 *PostedIn*
 * Enhanced various web applications belonging to the company, utilizing tools such as Ember.js and React. As well as PHP/Laravel on the backend.
@@ -29,8 +33,6 @@ Id: professional-experience
 * Provided support to an array of smaller offices across many locations, each site providing varied challenges from Hospitality and Gambling specific hardware to ad-hoc network configurations.
 * Administered and provided ongoing development for the organization's various websites, including their company site along with those belonging to their 12 distinct venues.
 * Serviced and repaired both desktop and server applications, in particular the event management software used by the club: Ungerboeck's EMS.
-
-***
 
 **Support Engineer** [June, 2011 - July, 2012]  
 *CSG Technology Solutions*

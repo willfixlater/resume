@@ -12,14 +12,16 @@ Rodrigo Farcas
 Sara Badilla  
 +56 2 2377 8551  
 <sbadilla@cocha.com>  
-(Spanish only)
+(Spanish)
 
 **Medesen**  
 Tom Pisel  
 +61 4 2228 5150  
-<tom.pxl@gmail.com>
+<tom.pxl@gmail.com>  
+(English)
 
 **CSG Technology**  
 Ronil Narayan  
 +61 4 3982 6625  
-<ronil.narayan@nec.com.au>
+<ronil.narayan@nec.com.au>  
+(English)
