@@ -13,12 +13,12 @@
       (let [tmp (boot/tmp-dir!)
             in-files (boot/input-files fileset)
             md-files (boot/by-re [#"^markup/en/.+\.md$"] in-files)
-            css-files (boot/by-re [#"^styles/.+\.css$"] in-files)
             html-out (io/file tmp "index.html")]
         (build-doc (map boot/tmp-file md-files) html-out
           {:lang "en"
            :title "Resume - Shayden Martin"
-           :style-paths (map :path css-files)
+           :style-paths (map #(str "styles/" %)
+                             (keys resume.styles/*active-garden-docs*))
            :sections ["contact"
                       "resume"
                       "skill-summary"
