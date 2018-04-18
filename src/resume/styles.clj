@@ -1,12 +1,18 @@
 (ns resume.styles
-  (:require [garden.core :refer [css]]
-            [garden.selectors :as s]
-            [garden.stylesheet :refer [at-media]]
+  (:require [garden.core :as c :refer [css]]
+            [garden.selectors :as s :refer [nth-of-type]]
+            [garden.stylesheet :as ss :refer [at-media]]
             [garden.units :as u]
             [clojure.java.io :as io]))
 
+;;; There are two hacks defined here to work around the lack of classes in markdown.
+;;; The first is that the 'i' element is used exclusively in the contact section to
+;;; make links explicit in print. The second is that the 'hr' element is invisible
+;;; and used throughout the document to force a page break in print.
+
 (def resume
-  [[:body {:font-family "Arial, sans-serif"
+  [["@page" {:margin "2cm"}]
+   [:body {:font-family "Arial, sans-serif"
            :font-size "22px"}]
    (at-media {:screen :only}
              [:body {:max-width "700px"
@@ -43,7 +49,53 @@
    [:hr {:visibility "hidden"
          :margin "0"
          :border "0"
-         :page-break-after "always"}]])
+         :page-break-after "always"}]
+   [:#contact {:margin-top "4rem"
+               :margin-bottom "4rem"
+               :text-align "center"}
+    [:i {:font-style "normal"}]]
+   (at-media {:screen :only
+              :max-width "799px"}
+             [:#contact
+              [:p {:font-size "3rem"
+                   :lint-height "2"}]])
+   (at-media {:print :only}
+             [:#contact {:margin-top "0"
+                         :margin-bottom "1cm"}
+              [:i
+               [:a:after {:content "\": \" attr(href) \" \""}]]])
+   [:#skill-summary
+    [:p {:margin-top "2rem"}]
+    [:thead {:display "none"}]
+    [:tbody {:display "flex"
+             :flex-wrap "wrap"
+             :justify-content "space-between"}]
+    [:tr {:display "flex"
+          :flex-basis "45%"
+          :justify-content "space-between"}]
+    [:td
+     [(s/& (nth-of-type "2")) {:text-align "right"}]]]
+   [:#interesting-reading
+    [:h2 {:page-break-before "initial"}]
+    [:p {:text-align "center"}]]
+   [:#references
+    [:h2 {:page-break-before "initial"}]
+    [:p {:display "inline-block"
+         :vertical-align "top"
+         :margin-left "0.5rem"
+         :margin-right "0.5rem"
+         :text-align "center"}]]
+   (at-media {:screen :only
+              :max-width "799px"}
+             [:#references
+              [:p {:display "block"
+                   :font-size "3rem"
+                   :line-height "2"
+                   :margin-top "3rem"}]])
+   (at-media {:print :only}
+             [:#references
+              [:p {:margin-left "1rem"
+                   :margin-right "1rem"}]])])
 
 (def ^:dynamic *active-garden-docs* {"resume.css" resume})
 
