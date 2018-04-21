@@ -1,9 +1,6 @@
 (ns resume.styles
-  (:require [garden.core :as c :refer [css]]
-            [garden.selectors :as s :refer [nth-of-type]]
-            [garden.stylesheet :as ss :refer [at-media]]
-            [garden.units :as u]
-            [clojure.java.io :as io]))
+  (:require [garden.selectors :as s :refer [nth-of-type]]
+            [garden.stylesheet :as ss :refer [at-media]]))
 
 ;;; There are two hacks defined here to work around the lack of classes in markdown.
 ;;; The first is that the 'i' element is used exclusively in the contact section to
@@ -98,11 +95,3 @@
                    :margin-right "1rem"}]])])
 
 (def ^:dynamic *active-garden-docs* {"resume.css" resume})
-
-(defn build [out-dir {:keys [dest-dir] :as opts}]
-  (let [garden-docs (seq *active-garden-docs*)]
-    (doseq [[dest-filename garden-doc] garden-docs]
-      (let [out (io/file out-dir (str dest-dir dest-filename))]
-        (doto out
-          io/make-parents
-          (spit (apply css garden-doc)))))))

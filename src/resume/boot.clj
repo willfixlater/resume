@@ -1,9 +1,8 @@
 (ns resume.boot
   (:require [boot.core :as boot]
             [clojure.java.io :as io]
-            [resume.core :refer [build-doc copy-file]]
-            [resume.styles :refer  [build]
-                           :rename {build build-styles}]))
+            [resume.core :refer [generate-markup generate-styles]]
+            [resume.styles :as styles]))
 
 (boot/deftask build-html
   "Build the project's html file(s)."
@@ -14,17 +13,17 @@
             in-files (boot/input-files fileset)
             md-files (boot/by-re [#"^markup/en/.+\.md$"] in-files)
             html-out (io/file tmp "index.html")]
-        (build-doc (map boot/tmp-file md-files) html-out
-          {:lang "en"
-           :title "Resume - Shayden Martin"
-           :style-paths (map #(str "styles/" %)
-                             (keys resume.styles/*active-garden-docs*))
-           :sections ["contact"
-                      "resume"
-                      "skill-summary"
-                      "professional-experience"
-                      "educational-background"
-                      "references"]})
+        (generate-markup (map boot/tmp-file md-files) html-out
+                         {:lang "en"
+                          :title "Resume - Shayden Martin"
+                          :style-paths (map #(str "styles/" %)
+                                            (keys styles/*active-garden-docs*))
+                          :sections ["contact"
+                                     "resume"
+                                     "skill-summary"
+                                     "professional-experience"
+                                     "educational-background"
+                                     "references"]})
         (-> fileset
           (boot/add-resource tmp)
           next-handler)))))
@@ -35,7 +34,8 @@
   (fn middleware [next-handler]
     (fn handler [fileset]
       (let [tmp (boot/tmp-dir!)]
-        (build-styles tmp {:dest-dir "styles/"})
+        (generate-styles styles/*active-garden-docs* tmp
+                         {:dest-dir "styles/"})
         (-> fileset
             (boot/add-resource tmp)
             next-handler)))))

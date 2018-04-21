@@ -2,7 +2,8 @@
   (:require [clojure.java.io :as io]
             [markdown.core :refer  [md-to-html-string-with-meta]
                            :rename {md-to-html-string-with-meta parse-md}]
-            [hiccup.page :refer [html5]]))
+            [hiccup.page :refer [html5]]
+            [garden.core :refer [css]]))
 
 ;; Pure
 
@@ -28,7 +29,7 @@
 
 ;; Impure
 
-(defn build-doc
+(defn generate-markup
   "Takes a sequence of input (markdown) files, an output file and a map of options.
   Builds an html document from the input files and spits it into the output file."
   [ins out {:keys [sections title style-paths lang] :as opts}]
@@ -43,7 +44,13 @@
                    head
                    body)))))
 
-(defn copy-file [in out]
-  (doto out
-    io/make-parents
-    (spit (slurp in))))
+(defn generate-styles
+  "Takes a map of destination filenames to garden documents, an output directory
+  and a map of options. Compiles the garden docs into css and spits them into the
+  file with the supplied filename under the output directory."
+  [filenames->garden out-dir {:keys [dest-dir] :as opts}]
+  (doseq [[dest-filename garden-doc] filenames->garden]
+    (let [out (io/file out-dir (str dest-dir dest-filename))]
+      (doto out
+        io/make-parents
+        (spit (apply css garden-doc))))))
