@@ -37,7 +37,7 @@
         head [:head [:title title] (map style-tag style-paths)]
         body [:body (mds->html (map (comp parse-md slurp) ins)
                                {:filter (comp (set sections) doc-id)
-                                :sort   (comp (partial get doc-order) doc-id)})]]
+                                :sort   (comp doc-order doc-id)})]]
     (doto out
       io/make-parents
       (spit (html5 {:lang lang}
