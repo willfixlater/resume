@@ -11,7 +11,7 @@
     (fn handler [fileset]
       (let [tmp (boot/tmp-dir!)
             in-files (boot/input-files fileset)
-            md-files (boot/by-re [#"^markup/en/.+\.md$"] in-files)
+            md-files (boot/by-re [#"^markup[/\\]en[/\\].*\.md$"] in-files)
             html-out (io/file tmp "index.html")]
         (generate-markup (map boot/tmp-file md-files) html-out
                          {:lang "en"
