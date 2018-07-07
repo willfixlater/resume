@@ -2,9 +2,13 @@ Id: professional-experience
 
 ## Professional Experience
 
-**Associate Consultant** [April, 2018 - Present]  
+**Senior Developer** [June, 2018 - Present]  
+*ICM Consulting*
+* Enhances and maintains client projects, such as web APIs and single page apps, utilizing Clojure(script).
+
+**Associate Consultant** [April, 2018 - June, 2018]  
 *Servian*
-* Provides assistance and advice to Servian's clients in a variety of areas and capacities.
+* Provided assistance and advice to Servian's clients in a variety of areas and capacities.
 
 **Fullstack Developer** [July, 2014 - December, 2017]  
 *PostedIn*
@@ -13,13 +17,13 @@ Id: professional-experience
 * Migrated a network of over a dozen sites dedicated to content publishing to the Pelican static site generator, vastly reducing server overhead.
 * Migrated all of the forums corresponding to the content sites to a distributed network of Docker containers using Discourse.
 
+***
+
 **Software Analyst/Engineer** [February, 2014 - July, 2014]  
 *Cocha Tourism*
 * Was the lead developer of the company's Customer Relationship Management application, working with tools such as PHP, Symfony, Javascript and React.
 * Maintained another internal application, Contact Center, which was used to facilitate communication and workflow between teams. It was written in PHP and Symfony.
 * Significantly optimized the exisiting data stores and developed a tool for running ETL ("Extract, Translate, Load") scripts between the various MySQL, PostgreSQL and SQL Server databases.
-
-***
 
 **Tech Co-founder** [December, 2012 - September, 2013]  
 *Medesen*
@@ -27,6 +31,8 @@ Id: professional-experience
 * Developed an e-commerce platform for pharmacies and vendors in the healthcare space, which allowed them to adapt the service to their local legislative requirements.
 * Initially prototyped in Ruby on Rails, later re-written to Python and Django. Hired and directed contractors to help with the development of the rewrite.
 * Oversaw all of the company's expenditures and book-keeping.
+
+***
 
 **Support Engineer** [August, 2012 - November, 2012]  
 *Melbourne Racing Club*
