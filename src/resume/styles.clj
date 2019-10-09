@@ -7,6 +7,8 @@
 ;;; make links explicit in print. The second is that the 'hr' element is invisible
 ;;; and used throughout the document to force a page break in print.
 
+;; TODO: Fix styles for smaller view ports
+
 (def resume
   [["@page" {:margin "2cm"}]
    [:body {:font-family "Arial, sans-serif"
@@ -77,21 +79,6 @@
     [:p {:text-align "center"}]]
    [:#references
     [:h2 {:page-break-before "initial"}]
-    [:p {:display "inline-block"
-         :vertical-align "top"
-         :margin-left "0.5rem"
-         :margin-right "0.5rem"
-         :text-align "center"}]]
-   (at-media {:screen :only
-              :max-width "799px"}
-             [:#references
-              [:p {:display "block"
-                   :font-size "3rem"
-                   :line-height "2"
-                   :margin-top "3rem"}]])
-   (at-media {:print :only}
-             [:#references
-              [:p {:margin-left "1rem"
-                   :margin-right "1rem"}]])])
+    [:p {:text-align "center"}]]])
 
 (def ^:dynamic *active-garden-docs* {"resume.css" resume})
