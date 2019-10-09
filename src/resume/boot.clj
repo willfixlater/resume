@@ -53,3 +53,13 @@
   (comp (build-html)
         (build-css)
         (commit)))
+
+(boot/deftask reload-source
+  "Reload source used to generate HTML & CSS."
+  []
+  (fn middleware [next-handler]
+    (fn handler [fileset]
+      ;; TODO: Make this a little bit more dynamic
+      (require 'resume.core :reload)
+      (require 'resume.styles :reload)
+      (next-handler fileset))))
