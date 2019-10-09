@@ -4,11 +4,14 @@ Id: professional-experience
 
 **Senior Developer** [June, 2018 - Present]  
 *ICM Consulting*
-* Enhances and maintains client projects, such as web APIs and single page apps, utilizing Clojure(script).
+* Is the project lead for a client that provides a combined insurance and finance product in the real estate space, overseeing and performing the analysis and delivery for a number of projects.
+* Utilising Flutter, built a mobile app aimed at helping attendees of whisky tasting events navigate stands, provide feedback and easily decide on purchases.
+* Formed part of the team working to implement an eTMF for an international contract research organisation.
 
 **Associate Consultant** [April, 2018 - June, 2018]  
 *Servian*
-* Provided assistance and advice to Servian's clients in a variety of areas and capacities.
+* Provided assistance and advice to Servian's clients.
+* Perfromed an upgrade on a number of JavaScript libraries over a 3 week period for a client, ensuring 0% regression.
 
 **Fullstack Developer** [July, 2014 - December, 2017]  
 *PostedIn*
@@ -21,24 +24,23 @@ Id: professional-experience
 
 **Software Analyst/Engineer** [February, 2014 - July, 2014]  
 *Cocha Tourism*
-* Was the lead developer of the company's Customer Relationship Management application, working with tools such as PHP, Symfony, Javascript and React.
+* Was the lead developer of the company's Customer Relationship Management application, working with tools such as PHP, Symfony, Javascript and jQuery.
 * Maintained another internal application, Contact Center, which was used to facilitate communication and workflow between teams. It was written in PHP and Symfony.
-* Significantly optimized the exisiting data stores and developed a tool for running ETL ("Extract, Translate, Load") scripts between the various MySQL, PostgreSQL and SQL Server databases.
+* Significantly optimized the exisiting data stores and developed a tool for running ETL ("Extract, Translate, Load") scripts between databases.
 
 **Tech Co-founder** [December, 2012 - September, 2013]  
 *Medesen*
 * Responsible for all technical decision-making and software development.
 * Developed an e-commerce platform for pharmacies and vendors in the healthcare space, which allowed them to adapt the service to their local legislative requirements.
-* Initially prototyped in Ruby on Rails, later re-written to Python and Django. Hired and directed contractors to help with the development of the rewrite.
 * Oversaw all of the company's expenditures and book-keeping.
-
-***
 
 **Support Engineer** [August, 2012 - November, 2012]  
 *Melbourne Racing Club*
 * Provided support to an array of smaller offices across many locations, each site providing varied challenges from Hospitality and Gambling specific hardware to ad-hoc network configurations.
 * Administered and provided ongoing development for the organization's various websites, including their company site along with those belonging to their 12 distinct venues.
 * Serviced and repaired both desktop and server applications, in particular the event management software used by the club: Ungerboeck's EMS.
+
+***
 
 **Support Engineer** [June, 2011 - July, 2012]  
 *CSG Technology Solutions*
