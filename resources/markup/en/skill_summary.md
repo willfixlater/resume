@@ -11,6 +11,7 @@ Id: skill-summary
 | JavaScript      | ★★★ |
 | HTML            | ★★★ |
 | CSS             | ★★★ |
+| SQL             | ★★★ |
 | PHP             | ★★★ |
 | Python          | ☆★★ |
 | Ruby            | ☆★★ |

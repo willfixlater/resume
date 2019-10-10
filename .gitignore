@@ -1,4 +1,5 @@
 /target/**
+/.firebase/**
 .repl
 .nrepl-port
 .nrepl-history
