@@ -77,6 +77,8 @@
    [:#interesting-reading
     [:h2 {:page-break-before "initial"}]
     [:p {:text-align "center"}]]
+   [:#educational-background
+    [:h2 {:page-break-before "initial"}]]
    [:#references
     [:h2 {:page-break-before "initial"}]
     [:p {:text-align "center"}]]])

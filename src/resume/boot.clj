@@ -22,6 +22,7 @@
                                      "resume"
                                      "skill-summary"
                                      "professional-experience"
+                                     "courses-and-certification"
                                      "educational-background"
                                      "references"]})
         (-> fileset

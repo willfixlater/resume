@@ -13,6 +13,7 @@ Id: skill-summary
 | CSS             | ★★★ |
 | SQL             | ★★★ |
 | PHP             | ★★★ |
+| Scala           | ☆★★ |
 | Python          | ☆★★ |
 | Ruby            | ☆★★ |
 | Java            | ☆★★ |
@@ -26,7 +27,7 @@ Id: skill-summary
 | Reagent           | ★★★ |
 | Ring              | ★★★ |
 | Compojure         | ★★★ |
-| Component         | ★★★ |
+| Spark             | ★★★ |
 | React             | ★★★ |
 | Ember             | ★★★ |
 | Laravel           | ★★★ |
@@ -52,4 +53,3 @@ Id: skill-summary
 | Docker              | ☆★★ |
 | Firebase            | ☆★★ |
 | Ansible             | ☆☆★ |
-| Azure               | ☆☆★ |
