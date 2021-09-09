@@ -9,9 +9,9 @@ Id: professional-experience
 **Senior Software Engineer** [June, 2018 - April 2021]  
 *Argenti Cloud*
 * Led a project for one of Australia's most successful accounting and professional services companies, bringing their tax solutions application from a custom Excel spreadsheet to a cloud-based solution.
-* Was the project lead for a client that provides a combined insurance and finance product in the real estate space, while advising for, performing analysis on and assisting delivery on a number of other projects.
+* Was the project lead for a client that provides a combined insurance and finance product in the real estate space, while advising for, performing analysis on and assisting delivery on a number of other projects. This project utilised Clojure end-to-end.
 * Utilising Flutter, built a mobile app aimed at helping attendees of whisky tasting events navigate stands, provide feedback and easily decide on purchases.
-* Formed part of the team working to implement an eTMF for an international contract research organisation.
+* Formed part of the team working to implement an eTMF for an international contract research organisation. Used Clojure extensively across both the front and back end, including tools such as Ring, Compojure and Reagent. Cloud infrastructure was managed using AWS CloudFormation and Infrastructure-as-Code principles were strictly adhered to.
 
 **Associate Consultant** [April, 2018 - June, 2018]  
 *Servian*
