@@ -2,9 +2,14 @@ Id: professional-experience
 
 ## Professional Experience
 
-**Senior Developer** [June, 2018 - Present]  
-*ICM Consulting*
-* Is the project lead for a client that provides a combined insurance and finance product in the real estate space, overseeing and performing the analysis and delivery for a number of projects.
+**Senior Software Engineer** [April, 2021 - Present]  
+*Domain Group*
+* Provides advice, analysis and delivery as Domain transitions one of its acquisitions into its broader suite of Agent Solutions products.
+
+**Senior Software Engineer** [June, 2018 - April 2021]  
+*Argenti Cloud*
+* Led a project for one of Australia's most successful accounting and professional services companies, bringing their tax solutions application from a custom Excel spreadsheet to a cloud-based solution.
+* Was the project lead for a client that provides a combined insurance and finance product in the real estate space, while advising for, performing analysis on and assisting delivery on a number of other projects.
 * Utilising Flutter, built a mobile app aimed at helping attendees of whisky tasting events navigate stands, provide feedback and easily decide on purchases.
 * Formed part of the team working to implement an eTMF for an international contract research organisation.
 
@@ -13,14 +18,14 @@ Id: professional-experience
 * Provided assistance and advice to Servian's clients.
 * Perfromed an upgrade on a number of JavaScript libraries over a 3 week period for a client, ensuring 0% regression.
 
+***
+
 **Fullstack Developer** [July, 2014 - December, 2017]  
 *PostedIn*
 * Enhanced various web applications belonging to the company, utilizing tools such as Ember.js and React. As well as PHP/Laravel on the backend.
 * Developed and maintained the in-house Content Management System, written with Ruby and Sinatra.
 * Migrated a network of over a dozen sites dedicated to content publishing to the Pelican static site generator, vastly reducing server overhead.
 * Migrated all of the forums corresponding to the content sites to a distributed network of Docker containers using Discourse.
-
-***
 
 **Software Analyst/Engineer** [February, 2014 - July, 2014]  
 *Cocha Tourism*
@@ -34,13 +39,13 @@ Id: professional-experience
 * Developed an e-commerce platform for pharmacies and vendors in the healthcare space, which allowed them to adapt the service to their local legislative requirements.
 * Oversaw all of the company's expenditures and book-keeping.
 
+***
+
 **Support Engineer** [August, 2012 - November, 2012]  
 *Melbourne Racing Club*
 * Provided support to an array of smaller offices across many locations, each site providing varied challenges from Hospitality and Gambling specific hardware to ad-hoc network configurations.
 * Administered and provided ongoing development for the organization's various websites, including their company site along with those belonging to their 12 distinct venues.
 * Serviced and repaired both desktop and server applications, in particular the event management software used by the club: Ungerboeck's EMS.
-
-***
 
 **Support Engineer** [June, 2011 - July, 2012]  
 *CSG Technology Solutions*

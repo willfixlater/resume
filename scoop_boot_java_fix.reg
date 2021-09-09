@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+; This fix was suggested here when using scoop to intall boot and java: https://github.com/boot-clj/boot/issues/721
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\JavaSoft]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\JavaSoft\Java Runtime Environment]
+"CurrentVersion"="16.0"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\JavaSoft\Java Runtime Environment\11.0]
+"JavaHome"="C:\\Users\\shayd\\scoop\\apps\\openjdk\\current"
+"MicroVersion"="0"

@@ -13,12 +13,12 @@ Id: skill-summary
 | CSS             | ★★★ |
 | SQL             | ★★★ |
 | PHP             | ★★★ |
-| Scala           | ☆★★ |
-| Python          | ☆★★ |
-| Ruby            | ☆★★ |
-| Java            | ☆★★ |
-| Dart            | ☆★★ |
-| Rust            | ☆☆★ |
+| Scala           | ★★☆ |
+| Python          | ★★☆ |
+| Ruby            | ★★☆ |
+| Java            | ★★☆ |
+| Dart            | ★★☆ |
+| Rust            | ★☆☆ |
 
 **Frameworks and Libraries**
 
@@ -31,15 +31,15 @@ Id: skill-summary
 | React             | ★★★ |
 | Ember             | ★★★ |
 | Laravel           | ★★★ |
-| Flutter           | ☆★★ |
-| Re-frame          | ☆★★ |
-| Om Next           | ☆★★ |
-| Angular           | ☆★★ |
-| jQuery            | ☆★★ |
-| Pyramid           | ☆★★ |
-| Symfony           | ☆☆★ |
-| Django            | ☆☆★ |
-| Ruby on Rails     | ☆☆★ |
+| Flutter           | ★★☆ |
+| Re-frame          | ★★☆ |
+| Om Next           | ★★☆ |
+| Angular           | ★★☆ |
+| jQuery            | ★★☆ |
+| Pyramid           | ★★☆ |
+| Symfony           | ★☆☆ |
+| Django            | ★☆☆ |
+| Ruby on Rails     | ★☆☆ |
 
 **Tools and Services**
 
@@ -47,9 +47,9 @@ Id: skill-summary
 | ------------------- | ----- |
 | Google Cloud        | ★★★ |
 | AWS                 | ★★★ |
-| Circle CI           | ☆★★ |
-| Bitbucket Pipelines | ☆★★ |
-| Jenkins             | ☆★★ |
-| Docker              | ☆★★ |
-| Firebase            | ☆★★ |
-| Ansible             | ☆☆★ |
+| Microsoft Azure     | ★★☆ |
+| Circle CI           | ★★☆ |
+| Bitbucket Pipelines | ★★☆ |
+| Jenkins             | ★★☆ |
+| Docker              | ★★☆ |
+| Kubernetes          | ★☆☆ |
