@@ -1,6 +1,9 @@
-/.lsp/**
 /target/**
+/.lsp/**
 /.firebase/**
+/.cpcache/**
+/.clj-kondo/**
+/.calva/**
 .repl
 .nrepl-port
 .nrepl-history
