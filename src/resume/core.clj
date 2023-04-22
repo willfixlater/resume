@@ -32,25 +32,28 @@
 (defn generate-markup
   "Takes a sequence of input (markdown) files, an output file and a map of options.
   Builds an html document from the input files and spits it into the output file."
-  [ins out {:keys [sections title style-paths lang] :as opts}]
+  [md-files out {:keys [sections title style-paths lang] :as _opts}]
   (let [doc-order (zipmap sections (range))
-        head [:head [:title title] (map style-tag style-paths)]
-        body [:body (mds->html (map (comp parse-md slurp) ins)
+        head [:head
+              [:title title]
+              [:meta {:charset "utf-8"}]
+              (map style-tag (keys style-paths))]
+        body [:body (mds->html (map (comp parse-md slurp) md-files)
                                {:filter (comp (set sections) doc-id)
                                 :sort   (comp doc-order doc-id)})]]
     (doto out
       io/make-parents
       (spit (html5 {:lang lang}
                    head
-                   body)))))
+                   body)))
+    nil))
 
 (defn generate-styles
   "Takes a map of destination filenames to garden documents, an output directory
   and a map of options. Compiles the garden docs into css and spits them into the
   file with the supplied filename under the output directory."
-  [filenames->garden out-dir {:keys [dest-dir] :as opts}]
-  (doseq [[dest-filename garden-doc] filenames->garden]
-    (let [out (io/file out-dir (str dest-dir dest-filename))]
-      (doto out
-        io/make-parents
-        (spit (apply css garden-doc))))))
+  [garden-doc out]
+  (doto out
+    io/make-parents
+    (spit (apply css garden-doc)))
+  nil)

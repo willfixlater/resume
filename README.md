@@ -1,30 +1,34 @@
 # My Resume
 
-This project generates my CV as a static web site, containing only HTML and CSS, using a set of Markdown files as input.
+This project generates my CV as a static web site, containing only HTML and CSS, using a set of Markdown files and Garden (CSS-in-EDN) docs as input.
 
 ## Requirements
 
-- JDK/JRE 1.7.0 or later
-- Boot CLJ
+- JDK 7 or later
+- Clojure CLI
 - Firebase CLI
-
-If installing the JDK on Windows via scoop, Boot will not be able to find the installation on your system. To remedy this, there is a script containing a registry fix at the root of this project called `scoop_boot_java_fix.reg`. You will need to edit script with the version and path details appropriate for your system, then open regedit and import it.
 
 ## Usage
 
+From the REPL, you can run the following functions in `resume.main`.
+
 To build the static output:
 ```
-boot once
+(build base-config)
 ```
 
-To build, serve locally on port 3000 and automatically re-build when source changes:
+To build, serve locally on port 3300 and automatically re-build when source changes:
 ```
-boot dev
+(dev base-config)
 ```
 
-To publish to Firebase:
+To stop the dev server and source watchers:
 ```
-boot once
+(stop-dev base-config)
+```
+
+To publish to Firebase, run the following from terminal after building:
+```
 firebase login # Only required once per user profile
 firebase deploy
 ```
@@ -34,8 +38,11 @@ firebase deploy
 - The resulting static web site should be clean and readable
 - When printed, the result should still be clean and readable
 - It should be trivial to edit existing sections and add new section
+- Serve as a testing ground for my ideas around Static Site Generation (SSG) & Server Side Rendering (SSR)
 
 ## TODO
 
-- Move from Boot to CLJ Command Line Tools
+- Fix hacks and viewport bugs in CSS
+- Add exception handling when reloading source for dev
 - Revise use of Garden and compilation of CSS
+- Revise the `config` data structure, attempt to generalise, then specify.

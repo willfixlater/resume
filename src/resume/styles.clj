@@ -1,5 +1,5 @@
 (ns resume.styles
-  (:require [garden.selectors :as s :refer [nth-of-type]]
+  (:require [garden.selectors :as s]
             [garden.stylesheet :as ss :refer [at-media]]))
 
 ;;; There are two hacks defined here to work around the lack of classes in markdown.
@@ -40,7 +40,7 @@
         :page-break-inside "avoid"}]
    [:ul {:page-break-inside "avoid"}]
    [:li {:margin-top "1rem"
-         :magin-bottom "1rem"
+         :margin-bottom "1rem"
          :page-break-inside "avoid"}]
    (at-media {:print :only}
              [:li {:margin-top "0.5rem"
@@ -57,7 +57,7 @@
               :max-width "799px"}
              [:#contact
               [:p {:font-size "3rem"
-                   :lint-height "2"}]])
+                   :line-height "2"}]])
    (at-media {:print :only}
              [:#contact {:margin-top "0"
                          :margin-bottom "1cm"}
@@ -73,7 +73,7 @@
           :flex-basis "45%"
           :justify-content "space-between"}]
     [:td
-     [(s/& (nth-of-type "2")) {:text-align "right"}]]]
+     [(s/& (s/nth-of-type "2")) {:text-align "right"}]]]
    [:#interesting-reading
     [:h2 {:page-break-before "initial"}]
     [:p {:text-align "center"}]]
@@ -82,5 +82,3 @@
    [:#references
     [:h2 {:page-break-before "initial"}]
     [:p {:text-align "center"}]]])
-
-(def ^:dynamic *active-garden-docs* {"resume.css" resume})
