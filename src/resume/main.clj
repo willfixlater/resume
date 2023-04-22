@@ -64,8 +64,8 @@
 
 (defn- stop-dev-server
   [_config]
-  (when dev-server
-    (.stop dev-server)))
+  (when-let [server @dev-server]
+    (.stop server)))
 
 (defn- start-dev-watches
   [config]
@@ -87,8 +87,8 @@
 
 (defn- stop-dev-watches
   [_config]
-  (when (seq dev-watches)
-    (doseq [watch dev-watches]
+  (when-let [watches (seq @dev-watches)]
+    (doseq [watch watches]
       (dirwatch/close-watcher watch))))
 
 (defn- build-serve-&-watch
