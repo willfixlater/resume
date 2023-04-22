@@ -2,9 +2,25 @@ Id: professional-experience
 
 ## Professional Experience
 
-**Senior Software Engineer** [April, 2021 - Present]  
+**Senior Software Engineer** [September, 2022 - Present]  
+*Kinde*
+* Helping to build a platform that will be the future of SaaS product development, covering features including authentication, user management, feature flags, billing & analytics.
+* Works with Golang, PL/pgSQL, AWS and a language developed in-house to render HTML in PostgreSQL.
+
+**Senior Software Engineer** [October, 2021 - September, 2022]  
+*Qantas Loyalty*
+* Worked with Clojure, Elasticsearch, AWS & many other technologies to maintain and enhance the system of micro-services that powers Qantas Hotels & Holidays' search and inventory systems.
+* Contributed to the technical design of new features and mentored other members of the team.
+* Provided support to the production environment of deployed systems.
+
+**Senior Software Engineer** [April, 2021 - October 2021]  
 *Domain Group*
-* Provides advice, analysis and delivery as Domain transitions one of its acquisitions into its broader suite of Agent Solutions products.
+* Provided advice, analysis and delivery as Domain transitions one of its acquisitions into its broader suite of Agent Solutions products.
+* Worked with TypeScript, React, MongoDB & AWS CDK to enhance and maintain Homepass, a product that makes managing an open house inspection simple by giving agents all the tools they need on their devices.
+* Contributed to the technical design of new features and mentored other members of the team.
+* Provided support to the production environment of deployed systems.
+
+***
 
 **Senior Software Engineer** [June, 2018 - April 2021]  
 *Argenti Cloud*
@@ -17,8 +33,6 @@ Id: professional-experience
 *Servian*
 * Provided assistance and advice to Servian's clients.
 * Perfromed an upgrade on a number of JavaScript libraries over a 3 week period for a client, ensuring 0% regression.
-
-***
 
 **Fullstack Developer** [July, 2014 - December, 2017]  
 *PostedIn*
@@ -39,13 +53,13 @@ Id: professional-experience
 * Developed an e-commerce platform for pharmacies and vendors in the healthcare space, which allowed them to adapt the service to their local legislative requirements.
 * Oversaw all of the company's expenditures and book-keeping.
 
-***
-
 **Support Engineer** [August, 2012 - November, 2012]  
 *Melbourne Racing Club*
 * Provided support to an array of smaller offices across many locations, each site providing varied challenges from Hospitality and Gambling specific hardware to ad-hoc network configurations.
 * Administered and provided ongoing development for the organization's various websites, including their company site along with those belonging to their 12 distinct venues.
 * Serviced and repaired both desktop and server applications, in particular the event management software used by the club: Ungerboeck's EMS.
+
+***
 
 **Support Engineer** [June, 2011 - July, 2012]  
 *CSG Technology Solutions*
