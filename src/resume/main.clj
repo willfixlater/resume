@@ -76,6 +76,7 @@
         src-watch (dirwatch/watch-dir (fn [& _args]
                                         (stop-dev-server config)
                                         ;; TODO: Exception handling on reload
+                                        ;; TODO: Programmatically determine namespaces that require reloading
                                         (require 'resume.styles :reload)
                                         (require 'resume.core :reload)
                                         (require 'resume.main :reload)
