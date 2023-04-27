@@ -10,7 +10,7 @@
 
 (defonce ^:private dev-watches (atom #{}))
 
-(def ^:private base-config
+(def ^:private default-opts
   {:port 3300
    :lang "en"
    :out-path "target"
@@ -26,82 +26,82 @@
               "references"]})
 
 (defn- build-html
-  [config]
-  (let [html-out-file (io/file (config :out-path) "index.html")
-        md-in-dir (io/file (config :md-in-path) (config :lang))
+  [opts]
+  (let [html-out-file (io/file (opts :out-path) "index.html")
+        md-in-dir (io/file (opts :md-in-path) (opts :lang))
         md-in-children (file-seq md-in-dir)
         md-in-files (filter #(.isFile %) md-in-children)]
     (generate-markup md-in-files html-out-file
-                     {:lang (config :lang)
-                      :title (config :title)
-                      :style-paths (config :style-paths)
-                      :sections (config :sections)})))
+                     {:lang (opts :lang)
+                      :title (opts :title)
+                      :style-paths (opts :style-paths)
+                      :sections (opts :sections)})))
 
 (defn- build-css
-  [config]
-  (doseq [[dest-filepath garden-doc] (config :style-paths)]
-    (let [dest-file (io/file (config :out-path) dest-filepath)]
+  [opts]
+  (doseq [[dest-filepath garden-doc] (opts :style-paths)]
+    (let [dest-file (io/file (opts :out-path) dest-filepath)]
       (generate-styles garden-doc dest-file))))
 
 (defn- build-once
-  [config]
-  (build-html config)
-  (build-css config))
+  [opts]
+  (build-html opts)
+  (build-css opts))
 
 (defn- serve
-  [config]
+  [opts]
   (let [handler (-> (fn handler [_request]
                       {:status 404
                        :body "<h1>404 Not Found</h1>"})
-                    (ring.mw.file/wrap-file (config :out-path)))]
+                    (ring.mw.file/wrap-file (opts :out-path)))]
     (ring.a.jetty/run-jetty handler
-                            {:port (config :port)
+                            {:port (opts :port)
                              :join? false})))
 
 (defn- start-dev-server
-  [config]
-  (reset! dev-server (serve config)))
+  [opts]
+  (reset! dev-server (serve opts)))
 
 (defn- stop-dev-server
-  [_config]
+  [_opts]
   (when-let [server @dev-server]
     (.stop server)))
 
 (defn- start-dev-watches
-  [config]
+  [opts]
   (let [markup-watch (dirwatch/watch-dir (fn [& _args]
-                                           (build-once config))
-                                         (io/file (config :md-in-path)
-                                                  (config :lang)))
+                                           (build-once opts))
+                                         (io/file (opts :md-in-path)
+                                                  (opts :lang)))
         src-watch (dirwatch/watch-dir (fn [& _args]
-                                        (stop-dev-server config)
+                                        (stop-dev-server opts)
                                         ;; TODO: Exception handling on reload
                                         ;; TODO: Programmatically determine namespaces that require reloading
                                         (require 'resume.styles :reload)
                                         (require 'resume.core :reload)
                                         (require 'resume.main :reload)
-                                        (build-once config)
-                                        (start-dev-server config))
+                                        (build-once opts)
+                                        (start-dev-server opts))
                                       (io/file "src/resume"))]
     (reset! dev-watches #{markup-watch src-watch})))
 
 (defn- stop-dev-watches
-  [_config]
+  [_opts]
   (when-let [watches (seq @dev-watches)]
     (doseq [watch watches]
       (dirwatch/close-watcher watch))))
 
 (defn- build-serve-&-watch
-  [config]
-  (build-once config)
-  (start-dev-server config)
-  (start-dev-watches config)
+  [opts]
+  (build-once opts)
+  (start-dev-server opts)
+  (start-dev-watches opts)
   nil)
 
 (defn- stop-serve-&-watch
-  [config]
-  (stop-dev-watches config)
-  (stop-dev-server config)
+  [opts]
+  (stop-dev-watches opts)
+  (stop-dev-server opts)
   nil)
 
 ;; TODO: Docstrings and metadata for following commands
@@ -113,7 +113,7 @@
 (def stop-dev stop-serve-&-watch)
 
 (comment
-  (build base-config)
-  (dev base-config)
-  (stop-dev base-config)
+  (build default-opts)
+  (dev default-opts)
+  (stop-dev default-opts)
   )

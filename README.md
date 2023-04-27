@@ -14,18 +14,20 @@ From the REPL, you can run the following functions in `resume.main`.
 
 To build the static output:
 ```
-(build base-config)
+(build default-opts)
 ```
 
 To build, serve locally on port 3300 and automatically re-build when source changes:
 ```
-(dev base-config)
+(dev default-opts)
 ```
 
 To stop the dev server and source watchers:
 ```
-(stop-dev base-config)
+(stop-dev default-opts)
 ```
+
+
 
 To publish to Firebase, run the following from terminal after building:
 ```
@@ -45,4 +47,4 @@ firebase deploy
 - Fix hacks and viewport bugs in CSS
 - Add exception handling when reloading source for dev
 - Revise use of Garden and compilation of CSS
-- Revise the `config` data structure, attempt to generalise, then specify.
+- Revise the command `opts` data structure in `resume.main`, attempt to generalise, then specify.
