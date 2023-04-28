@@ -1,9 +1,10 @@
 (ns resume.main
-  (:require [clojure.java.io :as io]
+  (:require [clojure.set :as set]
+            [clojure.java.io :as io]
             [juxt.dirwatch :as dirwatch]
             [ring.middleware.file :as ring.mw.file]
             [ring.adapter.jetty :as ring.a.jetty]
-            [resume.core :refer [generate-markup generate-styles]]
+            [resume.core :refer [write-markdown-files write-garden-clj]]
             [resume.styles :as styles]))
 
 (defonce ^:private dev-server (atom nil))
@@ -12,36 +13,72 @@
 
 (def ^:private default-opts
   {:port 3300
-   :lang "en"
    :out-path "target"
-   :md-in-path "resources/markup"
-   :style-paths {"styles/resume.css" styles/resume}
-   :title "Resume - Shayden Martin"
-   :sections ["contact"
-              "resume"
-              "skill-summary"
-              "professional-experience"
-              "courses-and-certification"
-              "educational-background"
-              "references"]})
+   :markup {:index
+            {:out-path "index.html"
+             :title "Resume - Shayden Martin"
+             :lang "en"
+             :styles [:resume]
+             :markdown/files
+             ["resources/markup/en/contact.md"
+              "resources/markup/en/resume.md"
+              "resources/markup/en/skill_summary.md"
+              "resources/markup/en/professional_experience.md"
+              "resources/markup/en/courses_and_certification.md"
+              "resources/markup/en/educational_background.md"
+              "resources/markup/en/references.md"]}}
+   :styles {:resume
+            {:out-path "styles/resume.css"
+             :garden/clj styles/resume}}
+   :watches {:build {:watch-paths ["resources/markup"]}
+             :reload {:watch-paths ["src/resume"]
+                      :reload-nss ['resume.styles
+                                   'resume.core
+                                   'resume.main]}}})
+
+(def supported-markup-src-types
+  ^:private
+  #{:markdown/files})
+
+(def supported-styles-src-types
+  ^:private
+  #{:garden/clj})
+
+(defn- validate-src-types-in-opts [supported-src-types opts]
+  (let [found-src-types (set/intersection supported-src-types
+                                          (set (keys opts)))]
+    (when (= 0 (count found-src-types))
+      (throw (ex-info "Could not find a supported src type key"
+                      {:opts opts
+                       :supported-keys supported-styles-src-types})))
+    (when (< 1 (count found-src-types))
+      (throw (ex-info "Found more than one src type key"
+                      {:opts opts
+                       :supported-keys supported-styles-src-types})))))
 
 (defn- build-html
   [opts]
-  (let [html-out-file (io/file (opts :out-path) "index.html")
-        md-in-dir (io/file (opts :md-in-path) (opts :lang))
-        md-in-children (file-seq md-in-dir)
-        md-in-files (filter #(.isFile %) md-in-children)]
-    (generate-markup md-in-files html-out-file
-                     {:lang (opts :lang)
-                      :title (opts :title)
-                      :style-paths (opts :style-paths)
-                      :sections (opts :sections)})))
+  (doseq [[_ markup-opts] (opts :markup)]
+    (validate-src-types-in-opts supported-markup-src-types markup-opts)
+    (cond
+      (markup-opts :markdown/files)
+      (let [out-file (io/file (opts :out-path) (markup-opts :out-path))
+            in-files (map io/file (markup-opts :markdown/files))
+            style-paths (for [id (markup-opts :styles)]
+                          (-> opts :styles id :out-path))]
+        (write-markdown-files out-file in-files
+                              {:title (markup-opts :title)
+                               :lang (markup-opts :lang)
+                               :style-paths style-paths})))))
 
 (defn- build-css
   [opts]
-  (doseq [[dest-filepath garden-doc] (opts :style-paths)]
-    (let [dest-file (io/file (opts :out-path) dest-filepath)]
-      (generate-styles garden-doc dest-file))))
+  (doseq [[_ styles-opts] (opts :styles)]
+    (validate-src-types-in-opts supported-styles-src-types styles-opts)
+    (cond
+      (styles-opts :garden/clj)
+      (let [out-file (io/file (opts :out-path) (styles-opts :out-path))]
+        (write-garden-clj out-file (styles-opts :garden/clj))))))
 
 (defn- build-once
   [opts]
@@ -69,20 +106,21 @@
 
 (defn- start-dev-watches
   [opts]
-  (let [markup-watch (dirwatch/watch-dir (fn [& _args]
-                                           (build-once opts))
-                                         (io/file (opts :md-in-path)
-                                                  (opts :lang)))
-        src-watch (dirwatch/watch-dir (fn [& _args]
-                                        (stop-dev-server opts)
-                                        ;; TODO: Exception handling on reload
-                                        ;; TODO: Programmatically determine namespaces that require reloading
-                                        (require 'resume.styles :reload)
-                                        (require 'resume.core :reload)
-                                        (require 'resume.main :reload)
-                                        (build-once opts)
-                                        (start-dev-server opts))
-                                      (io/file "src/resume"))]
+  (let [markup-watch (apply dirwatch/watch-dir
+                            (fn [& _args]
+                              (build-once opts))
+                            (map io/file
+                                 (-> opts :watches :build :watch-paths)))
+        src-watch (apply dirwatch/watch-dir
+                         (fn [& _args]
+                           (stop-dev-server opts)
+                           ;; TODO: Exception handling on reload
+                           (doseq [ns (-> opts :watches :reload :reload-nss)]
+                             (require ns :reload))
+                           (build-once opts)
+                           (start-dev-server opts))
+                         (map io/file
+                              (-> opts :watches :reload :watch-paths)))]
     (reset! dev-watches #{markup-watch src-watch})))
 
 (defn- stop-dev-watches

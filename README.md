@@ -47,4 +47,3 @@ firebase deploy
 - Fix hacks and viewport bugs in CSS
 - Add exception handling when reloading source for dev
 - Revise use of Garden and compilation of CSS
-- Revise the command `opts` data structure in `resume.main`, attempt to generalise, then specify.
