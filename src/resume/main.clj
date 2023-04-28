@@ -129,7 +129,7 @@
     (doseq [watch watches]
       (dirwatch/close-watcher watch))))
 
-(defn- build-serve-&-watch
+(defn- start-serve-&-watch
   [opts]
   (build-once opts)
   (start-dev-server opts)
@@ -142,16 +142,14 @@
   (stop-dev-server opts)
   nil)
 
-;; TODO: Docstrings and metadata for following commands
+;; TODO: Add command for running serve-&-watch from CLI
+;; TODO: Docstrings and metadata for following command(s)
 
-(def build! build-once)
-
-(def dev! build-serve-&-watch)
-
-(def stop-dev! stop-serve-&-watch)
+(defn build! [& _args]
+  (build-once default-opts))
 
 (comment
   (build! default-opts)
-  (dev! default-opts)
-  (stop-dev! default-opts)
+  (start-serve-&-watch default-opts)
+  (stop-serve-&-watch default-opts)
   )
