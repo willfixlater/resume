@@ -21,7 +21,7 @@
 
 ;; Impure
 
-(defn write-markdown-files
+(defn write-markdown-files!
   "Takes an output file, a sequence of input (markdown) files and a map of
    options. Builds an html document from the input files and spits it into the
    output file."
@@ -38,11 +38,11 @@
                    body)))
     nil))
 
-(defn write-garden-clj
+(defn write-garden-clj!
   "Takes an output file, a garden document and a map of options. Compiles the
    garden docs into css and spits them into the output file."
   ([out-file garden-clj]
-   (write-garden-clj out-file garden-clj nil))
+   (write-garden-clj! out-file garden-clj nil))
   ([out-file garden-clj _opts]
    (doto out-file
      io/make-parents

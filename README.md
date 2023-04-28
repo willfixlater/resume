@@ -14,20 +14,18 @@ From the REPL, you can run the following functions in `resume.main`.
 
 To build the static output:
 ```
-(build default-opts)
+(build! default-opts)
 ```
 
 To build, serve locally on port 3300 and automatically re-build when source changes:
 ```
-(dev default-opts)
+(dev! default-opts)
 ```
 
 To stop the dev server and source watchers:
 ```
-(stop-dev default-opts)
+(stop-dev! default-opts)
 ```
-
-
 
 To publish to Firebase, run the following from terminal after building:
 ```

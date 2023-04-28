@@ -4,7 +4,7 @@
             [juxt.dirwatch :as dirwatch]
             [ring.middleware.file :as ring.mw.file]
             [ring.adapter.jetty :as ring.a.jetty]
-            [resume.core :refer [write-markdown-files write-garden-clj]]
+            [resume.core :refer [write-markdown-files! write-garden-clj!]]
             [resume.styles :as styles]))
 
 (defonce ^:private dev-server (atom nil))
@@ -66,10 +66,10 @@
             in-files (map io/file (markup-opts :markdown/files))
             style-paths (for [id (markup-opts :styles)]
                           (-> opts :styles id :out-path))]
-        (write-markdown-files out-file in-files
-                              {:title (markup-opts :title)
-                               :lang (markup-opts :lang)
-                               :style-paths style-paths})))))
+        (write-markdown-files! out-file in-files
+                               {:title (markup-opts :title)
+                                :lang (markup-opts :lang)
+                                :style-paths style-paths})))))
 
 (defn- build-css
   [opts]
@@ -78,7 +78,7 @@
     (cond
       (styles-opts :garden/clj)
       (let [out-file (io/file (opts :out-path) (styles-opts :out-path))]
-        (write-garden-clj out-file (styles-opts :garden/clj))))))
+        (write-garden-clj! out-file (styles-opts :garden/clj))))))
 
 (defn- build-once
   [opts]
@@ -144,14 +144,14 @@
 
 ;; TODO: Docstrings and metadata for following commands
 
-(def build build-once)
+(def build! build-once)
 
-(def dev build-serve-&-watch)
+(def dev! build-serve-&-watch)
 
-(def stop-dev stop-serve-&-watch)
+(def stop-dev! stop-serve-&-watch)
 
 (comment
-  (build default-opts)
-  (dev default-opts)
-  (stop-dev default-opts)
+  (build! default-opts)
+  (dev! default-opts)
+  (stop-dev! default-opts)
   )
