@@ -27,8 +27,9 @@ To stop the dev server and source watchers:
 (stop-serve-&-watch default-opts)
 ```
 
-To publish to Firebase, run the following from terminal after building:
+To build & publish to Firebase, run the following from terminal:
 ```
+clj -X resume.main/build!
 firebase login # Only required once per user profile
 firebase deploy
 ```
