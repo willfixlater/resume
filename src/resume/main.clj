@@ -114,7 +114,6 @@
         src-watch (apply dirwatch/watch-dir
                          (fn [& _args]
                            (stop-dev-server opts)
-                           ;; TODO: Exception handling on reload
                            (doseq [ns (-> opts :watches :reload :reload-nss)]
                              (require ns :reload))
                            (build-once opts)

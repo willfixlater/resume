@@ -44,5 +44,4 @@ firebase deploy
 ## TODO
 
 - Fix hacks and viewport bugs in CSS
-- Add exception handling when reloading source for dev
 - Revise use of Garden and compilation of CSS
