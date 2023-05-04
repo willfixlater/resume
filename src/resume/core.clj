@@ -40,7 +40,7 @@
 
 (defn write-garden-clj!
   "Takes an output file, a garden document and a map of options. Compiles the
-   garden docs into css and spits them into the output file."
+   garden doc into css and spits it into the output file."
   ([out-file garden-clj]
    (write-garden-clj! out-file garden-clj nil))
   ([out-file garden-clj _opts]
