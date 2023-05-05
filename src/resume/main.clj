@@ -95,32 +95,10 @@
                             {:port (opts :port)
                              :join? false})))
 
-(defn- start-dev-server
-  [opts]
-  (reset! dev-server (serve opts)))
-
 (defn- stop-dev-server
   [_opts]
   (when-let [server @dev-server]
     (.stop server)))
-
-(defn- start-dev-watches
-  [opts]
-  (let [markup-watch (apply dirwatch/watch-dir
-                            (fn [& _args]
-                              (build-once opts))
-                            (map io/file
-                                 (-> opts :watches :build :watch-paths)))
-        src-watch (apply dirwatch/watch-dir
-                         (fn [& _args]
-                           (stop-dev-server opts)
-                           (doseq [ns (-> opts :watches :reload :reload-nss)]
-                             (require ns :reload))
-                           (build-once opts)
-                           (start-dev-server opts))
-                         (map io/file
-                              (-> opts :watches :reload :watch-paths)))]
-    (reset! dev-watches #{markup-watch src-watch})))
 
 (defn- stop-dev-watches
   [_opts]
@@ -128,17 +106,46 @@
     (doseq [watch watches]
       (dirwatch/close-watcher watch))))
 
-(defn- start-serve-&-watch
-  [opts]
-  (build-once opts)
-  (start-dev-server opts)
-  (start-dev-watches opts)
-  nil)
-
 (defn- stop-serve-&-watch
   [opts]
   (stop-dev-watches opts)
   (stop-dev-server opts)
+  nil)
+
+(defn- restart-dev-server
+  [opts]
+  (stop-dev-server opts)
+  (reset! dev-server (serve opts)))
+
+(defn- restart-dev-watches
+  [opts & {:keys [reload-opts]
+           :or {reload-opts (fn [] opts)}}]
+  (stop-dev-watches opts)
+  (let [markup-watch (apply dirwatch/watch-dir
+                            (fn [& _args]
+                              (build-once opts))
+                            (map io/file
+                                 (-> opts :watches :build :watch-paths)))
+        src-watch (apply dirwatch/watch-dir
+                         (fn [& _args]
+                           (stop-dev-watches opts)
+                           (stop-dev-server opts)
+                           (doseq [ns (-> opts :watches :reload :reload-nss)]
+                             (require ns :reload))
+                           (let [reloaded-opts (reload-opts)]
+                             (build-once reloaded-opts)
+                             (restart-dev-server reloaded-opts)
+                             (restart-dev-watches reloaded-opts
+                                                  :reload-opts reload-opts)))
+                         (map io/file
+                              (-> opts :watches :reload :watch-paths)))]
+    (reset! dev-watches #{markup-watch src-watch})))
+
+(defn- start-serve-&-watch
+  [opts & {:as extra-args}]
+  (build-once opts)
+  (restart-dev-server opts)
+  (restart-dev-watches opts (select-keys extra-args [:reload-opts]))
   nil)
 
 ;; TODO: Add command for running serve-&-watch from CLI
@@ -149,6 +156,7 @@
 
 (comment
   (build! default-opts)
-  (start-serve-&-watch default-opts)
+  (start-serve-&-watch default-opts
+                       :reload-opts (fn [] default-opts))
   (stop-serve-&-watch default-opts)
   )
