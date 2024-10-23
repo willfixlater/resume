@@ -2,16 +2,24 @@ Id: professional-experience
 
 ## Professional Experience
 
-**Senior Software Engineer** [September, 2022 - Present]  
+**Senior Software Engineer** [May, 2023 - Present]  
+*Qantas Loyalty*
+* Worked with Clojure, Elasticsearch, AWS & many other technologies to maintain and enhance the system of micro-services that powers Qantas Hotels & Holidays' search and inventory systems.
+* Contributed to the technical design of new features and mentored other members of the team.
+* Provided support to the production environment of deployed systems.
+
+**Senior Software Engineer** [September, 2022 - May, 2023]  
 *Kinde*
-* Helping to build a platform that will be the future of SaaS product development, covering features including authentication, user management, feature flags, billing & analytics.
-* Works with Golang, PL/pgSQL, AWS and a language developed in-house to render HTML in PostgreSQL.
+* Helped to build a platform that aims to be the future of SaaS product development, covering features including authentication, user management, feature flags, billing & analytics.
+* Worked with Golang, PL/pgSQL, AWS and a language developed in-house to render HTML in PostgreSQL.
 
 **Senior Software Engineer** [October, 2021 - September, 2022]  
 *Qantas Loyalty*
 * Worked with Clojure, Elasticsearch, AWS & many other technologies to maintain and enhance the system of micro-services that powers Qantas Hotels & Holidays' search and inventory systems.
 * Contributed to the technical design of new features and mentored other members of the team.
 * Provided support to the production environment of deployed systems.
+
+***
 
 **Senior Software Engineer** [April, 2021 - October 2021]  
 *Domain Group*
@@ -20,14 +28,14 @@ Id: professional-experience
 * Contributed to the technical design of new features and mentored other members of the team.
 * Provided support to the production environment of deployed systems.
 
-***
-
-**Senior Software Engineer** [June, 2018 - April 2021]  
+**Technical Lead** [June, 2018 - April 2021]  
 *Argenti Cloud*
 * Led a project for one of Australia's most successful accounting and professional services companies, bringing their tax solutions application from a custom Excel spreadsheet to a cloud-based solution.
 * Was the project lead for a client that provides a combined insurance and finance product in the real estate space, while advising for, performing analysis on and assisting delivery on a number of other projects. This project utilised Clojure end-to-end.
 * Utilising Flutter, built a mobile app aimed at helping attendees of whisky tasting events navigate stands, provide feedback and easily decide on purchases.
 * Formed part of the team working to implement an eTMF for an international contract research organisation. Used Clojure extensively across both the front and back end, including tools such as Ring, Compojure and Reagent. Cloud infrastructure was managed using AWS CloudFormation and Infrastructure-as-Code principles were strictly adhered to.
+
+***
 
 **Associate Consultant** [April, 2018 - June, 2018]  
 *Servian*
@@ -47,6 +55,8 @@ Id: professional-experience
 * Maintained another internal application, Contact Center, which was used to facilitate communication and workflow between teams. It was written in PHP and Symfony.
 * Significantly optimized the exisiting data stores and developed a tool for running ETL ("Extract, Translate, Load") scripts between databases.
 
+***
+
 **Tech Co-founder** [December, 2012 - September, 2013]  
 *Medesen*
 * Responsible for all technical decision-making and software development.
@@ -58,8 +68,6 @@ Id: professional-experience
 * Provided support to an array of smaller offices across many locations, each site providing varied challenges from Hospitality and Gambling specific hardware to ad-hoc network configurations.
 * Administered and provided ongoing development for the organization's various websites, including their company site along with those belonging to their 12 distinct venues.
 * Serviced and repaired both desktop and server applications, in particular the event management software used by the club: Ungerboeck's EMS.
-
-***
 
 **Support Engineer** [June, 2011 - July, 2012]  
 *CSG Technology Solutions*
