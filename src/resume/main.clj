@@ -16,7 +16,7 @@
    :out-path "target"
    :markup {:index
             {:out-path "index.html"
-             :title "Resume - Shayden Martin"
+             :title "CV - Shayden Martin"
              :lang "en"
              :styles [:resume]
              :markdown/files
