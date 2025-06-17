@@ -4,6 +4,7 @@
 /.cpcache/**
 /.clj-kondo/**
 /.calva/**
+/.portal/**
 .repl
 .nrepl-port
 .nrepl-history
