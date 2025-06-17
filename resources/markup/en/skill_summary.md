@@ -6,50 +6,46 @@ Id: skill-summary
 
 | Language        | Level |
 | --------------- | ----- |
-| Clojure(script) | ★★★ |
-| Haskell         | ★★★ |
+| TypeScript      | ★★★ |
 | JavaScript      | ★★★ |
 | HTML            | ★★★ |
 | CSS             | ★★★ |
 | SQL             | ★★★ |
-| PHP             | ★★★ |
-| Scala           | ★★☆ |
+| Clojure(script) | ★★★ |
+| Haskell         | ★★★ |
+| PHP             | ★★☆ |
 | Python          | ★★☆ |
 | Ruby            | ★★☆ |
 | Java            | ★★☆ |
-| Dart            | ★★☆ |
+| C#              | ★★☆ |
+| Go              | ★☆☆ |
+| Dart            | ★☆☆ |
 | Rust            | ★☆☆ |
 
 **Frameworks and Libraries**
 
 | Framework/Library | Level |
 | ----------------- | ----- |
-| Reagent           | ★★★ |
-| Ring              | ★★★ |
-| Compojure         | ★★★ |
-| Spark             | ★★★ |
 | React             | ★★★ |
-| Ember             | ★★★ |
-| Laravel           | ★★★ |
+| Next.js           | ★★★ |
+| Spring Boot       | ★★☆ |
 | Flutter           | ★★☆ |
-| Re-frame          | ★★☆ |
-| Om Next           | ★★☆ |
 | Angular           | ★★☆ |
 | jQuery            | ★★☆ |
-| Pyramid           | ★★☆ |
-| Symfony           | ★☆☆ |
+| Ruby on Rails     | ★★☆ |
+| Spark             | ★★☆ |
+| Kafka             | ★★☆ |
+| ASP.NET Core      | ★☆☆ |
 | Django            | ★☆☆ |
-| Ruby on Rails     | ★☆☆ |
 
 **Tools and Services**
 
 | Tool/Service        | Level |
 | ------------------- | ----- |
-| Google Cloud        | ★★★ |
 | AWS                 | ★★★ |
+| Google Cloud        | ★★★ |
+| Docker              | ★★★ |
 | Microsoft Azure     | ★★☆ |
-| Circle CI           | ★★☆ |
 | Bitbucket Pipelines | ★★☆ |
 | Jenkins             | ★★☆ |
-| Docker              | ★★☆ |
 | Kubernetes          | ★☆☆ |
